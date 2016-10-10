@@ -2,14 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="indexstyle.css">
     <title>Bill Splitter</title>
   </head>
+
+  <div id="wrapper">
+
+  <header>
+    <img src="http://placehold.it/350x150">
+
+  </header>
   <body>
     <h1>Welcome</h1>
     <h2>The most convienant and easiet way to split household bills!</h2>
 
+    <div id ="left">
+    <form id="logInForm">
+    User ID :  <input type="text" name="user_id" />
+    <br>
+    Password:  <input type="password" name="password" />
+    </form>
+    <button type="button" name="Login"></button>
+    </div>
 
+  <div id="right">
+    <form id="signUpForm" >
+    Create User ID :  <input type="text" name="user_id" />
+    <br>
+    Create Password:  <input type="password" name="password" />
+    <br>
+    Verify Password   <input type="verify" name="verify" value="">
+    </form>
+  </div>
 
 
   </body>
+  </div>
 </html>
