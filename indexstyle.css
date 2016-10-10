@@ -9,3 +9,7 @@
   margin:0 auto;
   text-align:left;
 }
+
+footer{
+  outline: 1px dotted black;
+}
