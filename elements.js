@@ -3,7 +3,7 @@
  * @param navObject: object for navigation elements with keys being name and values being the src
  * @param parentEl: html element to place form in
  */
-module.exports = class Navigation {
+class Navigation {
     constructor(parentEl, navObject) {
         this.parentEl = parentEl;
         this.navObject = navObject;
@@ -26,27 +26,43 @@ module.exports = class Navigation {
  * @param input: array of object with type and name properties
  * @param parentEl: html element to place form in
  */
-module.exports = class Form {
-    constructor(elClass, elId, input, parentEl) {
-        this.elClass = elClass;
-        this.elId = elId;
-        this.input = input;
-        this.parentEl = parentEl;
-    }
-
-    creatForm() {
-        let parent = document.getElementById(this.parentEl);
-        let form = document.createElement('form');
-        form.className = this.elClass;
-        form.id = this.elId;
-        for (var i = 0; i < this.input.length; i++) {
-            let input = document.createElement(input[i].type);
-            input.type = this.input[i];
-            tr.appendChild(th);
-        }
-        parent.appendChild(input);
-    }
+function Form(elClass, elId, input, parentEl) {
+    this.elClass = elClass;
+    this.elId = elId;
+    this.input = input;
+    this.parentEl = parentEl;
 }
+
+Form.prototype.createForm = function() {
+    var parent = document.getElementById(this.parentEl);
+    var form = document.createElement('form');
+    form.className = this.elClass;
+    form.id = this.elId;
+    for (var i = 0; i < this.input.length; i++) {
+
+        var label = document.createElement('label');
+        label.for = this.input[i].name;
+        label.innerHTML = this.input[i].name;
+
+        var inputEl = document.createElement('input');
+        inputEl.type = this.input[i].type;
+        inputEl.name = this.input[i].name;
+        form.appendChild(label, inputEl);
+        console.log(inputEl);
+    }
+    parent.appendChild(inputEl);
+}
+
+var billForm = [
+    { name: 'name', type: 'text' },
+    { name: 'category', type: 'text' },
+    { name: 'amount', type: 'text' },
+    { name: 'frequency', type: 'text' },
+    { name: 'dueDate', type: 'text' },
+    { name: 'submit', type: 'submit' }
+]
+
+//var billForm = new Form('Bills', 'Bill-Form', billForm, 'bill-form').createForm();
 
 /**
  * Creates a table
@@ -55,7 +71,9 @@ module.exports = class Form {
  * @param input: array of object with type and name properties
  * @param parentEl: html element to place form in
  */
-module.exports = class Table {
+
+/*
+class Table {
     constructor(data, head, parentEl) {
         this.data = data;
         this.head = head;
@@ -91,4 +109,4 @@ module.exports = class Table {
         this.head();
         this.row();
     }
-}
+} */
