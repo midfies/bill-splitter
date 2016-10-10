@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <title>Homepage</title>
+    <header> Header </header>
+  </head>
+  <body>
+    <div>
+      <!-- <p> Roommate section </p>
+      <form class="roommateForm"> Add/Remove: <input type="button" name="Add/Remove" value="Add/Remove roommate"/>
+     </form> -->
+     <h1> Manage roommates </h1>
+     <form id="addRoomateForm">
+     <fieldset>
+       <legend>Add Roommate</legend>
+       <label for="newFirstName">First Name:</label>
+       <input name="newFirstName" type="text"/><br/>
+       <label for="newLastName">Last Name:</label>
+       <input name="newLastName" type="text"/><br/>
+       <label for="newEmail">Email:</label>
+       <input name="newEmail" type="email"/><br/>
+       <button type="submit">Add</button>
+     </fieldset>
+   </form>
+   <section>
+     <ul id="roommatesList"></ul>
+   </section>
+      <p> Bill section </p>
+      <form class="billForm"> Add/Remove : <input type="button" name="Add/Remove" value="Add/Remove bills">
+  </div>
+  <script src="roommate.js"></script>
+  </body>
+  <footer>Footer content Copyright (c) 2016 Copyright Holder All Rights Reserved.
+  </footer>
+</html>

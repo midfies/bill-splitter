@@ -1,0 +1,82 @@
+* {
+  max-width: 90%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2.5em;
+  background-color: darkgray;
+  text-align: center;
+  border-radius: 1em;
+  max-width: 60%;
+  font-family: sans-serif;
+  margin-bottom: .5em;
+  background-image: url(http://wallpapercave.com/wp/s7R41PL.jpg);
+}
+
+body {
+  padding: 2em;
+}
+
+img {
+  border-radius: 1em;
+}
+
+#one {
+  float: right;
+  box-shadow: 5px 5px 3px #888888;
+}
+
+#two {
+  float: left;
+  box-shadow: 5px 5px 3px #888888;
+  margin: .3em;
+}
+
+#three {
+  float: right;
+  box-shadow: 5px 5px 3px #888888;
+}
+
+#four {
+  float: left;
+  box-shadow: 5px 5px 3px #888888;
+  margin: .3em;
+}
+
+img:hover {
+  background-color: darkgray;
+}
+
+p {
+  padding: 3em;
+  font-size: 1em;
+  max-width: 80%;
+  border: 1px solid black;
+  border-radius: 2em;
+  margin: 1em;
+}
+
+p:hover {
+  background-color: cyan;
+  background-image: url(http://wallpapercave.com/wp/oKeqrBc.jpg);
+  z-index: -1;
+  color: white;
+}
+
+footer {
+  background-color: darkgray;
+  text-align: center;
+  font-size: 1.2em;
+  border-radius: 1em;
+  max-width: 60%;
+  margin-top: 3em;
+  background: linear-gradient(20deg, purple, blue);
+}
+
+@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
