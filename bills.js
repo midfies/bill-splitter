@@ -4,12 +4,15 @@ var houseUser = [];
 var roommate = [];
 var bills = [];
 
+//Perform condition checking
+var roommate = localStorage.getItem('roommates');
+
 //Mock Objects 
 var roommate = [
-    { first: 'Jed', last: 'Thompson', email: 'jedlee2004@gmail.com', unpaid: [] },
-    { first: 'Firshta', last: 'Shefa', email: 'firshtashefa@gmail.com', unpaid: [] },
-    { first: 'Jeff', last: 'Wallace', email: 'rs4race@gmail.com' },
-    { first: 'Jason', last: 'Chu', email: 'jchu@gmail.com', unpaid: [] },
+    { id: 'jedthompson', first: 'Jed', last: 'Thompson', email: 'jedlee2004@gmail.com', unpaid: [] },
+    { id: 'firshtashefa', first: 'Firshta', last: 'Shefa', email: 'firshtashefa@gmail.com', unpaid: [] },
+    { id: 'jeffwallace', first: 'Jeff', last: 'Wallace', email: 'rs4race@gmail.com' },
+    { id: 'jasonchu', first: 'Jason', last: 'Chu', email: 'jchu@gmail.com', unpaid: [] },
 ];
 
 (function roommateSelect() {
@@ -17,6 +20,7 @@ var roommate = [
     for (var i = 0; i < roommate.length; i++) {
         var option = document.createElement('option');
         option.value = roommate[i].first + ' ' + roommate[i].last;
+        option.id = roommate[i].id;
         option.innerHTML = roommate[i].first + ' ' + roommate[i].last;
         parent.appendChild(option);
     }
@@ -29,7 +33,7 @@ function newBillHandler(event) {
     event.preventDefault();
     var options = event.target.rmOptions;
     var roommatesArr = [];
-
+    console.log(options);
     (function() {
         for (var i = 0; i < options.length; i++) {
             if (options[i].selected) {
@@ -37,6 +41,7 @@ function newBillHandler(event) {
             }
         }
     }());
+    console.log(roommatesArr);
 
     var name = event.target.billname.value;
     var amountDue = parseInt(event.target.amount.value);
@@ -55,7 +60,6 @@ function Bill(roommates, name, amountDue, frequency, category, dueDate) {
     this.name = name;
     this.amountDue = amountDue;
     this.frequency = frequency;
-    this.numSplit; //add in later
     this.category = category;
     this.paid; //handle later
     this.dueDate = dueDate;
@@ -67,20 +71,20 @@ function newRmBill(name, amountDue, dueDate, category) {
     this.dueDate = dueDate;
     this.category = category;
 }
-/*Object.keys(this.navObject).forEach(key => {
-    let li = document.createElement('li');
-    parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
-})*/
 
 Bill.prototype.splitBill = function() {
     var div = this.roommates.length;
     for (var i = 0; i < div; i++) {
         if (roommate.indexOf(this.roommates[i])) {
             var splitAmnt = this.amountDue / div;
-            new newRmBill(this.name, splitAmnt, this.dueDate, this.category); 
-            
-            var getRoommate = roommate.indexOf(this.roommates[i]).unpaid;
-            console.log(roommate);
+            var billObj = new newRmBill(this.name, splitAmnt, this.dueDate, this.category);
+
+            function findRm() {
+                return this.roommates[i] === roommate.id;
+            }
+            console.log('find', roommate.find(findRm));
+
+            //roommate.indexOf(this.roommates[i]).unpaid;
         }
     }
 
