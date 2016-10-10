@@ -19,42 +19,42 @@ if (localStorage.getItem('roommates')){
 // ];
 
 (function roommateSelect() {
-    var parent = document.getElementById('rmOptions');
-    for (var i = 0; i < roommate.length; i++) {
-        var option = document.createElement('option');
-        option.value = roommate[i].firstName + ' ' + roommate[i].lastName;
-        option.id = roommate[i].userID;
-        option.innerHTML = roommate[i].firstName + ' ' + roommate[i].lastName;
-        parent.appendChild(option);
-    }
+  var parent = document.getElementById('rmOptions');
+  for (var i = 0; i < roommate.length; i++) {
+    var option = document.createElement('option');
+    option.value = roommate[i].firstName + ' ' + roommate[i].lastName;
+    option.id = roommate[i].userID;
+    option.innerHTML = roommate[i].firstName + ' ' + roommate[i].lastName;
+    parent.appendChild(option);
+  }
 }());
 
 var billForm = document.getElementById('bill-form');
 billForm.addEventListener('submit', newBillHandler);
 
 function newBillHandler(event) {
-    event.preventDefault();
-    var options = event.target.rmOptions;
-    var roommatesArr = [];
-    console.log(options);
-    (function() {
-        for (var i = 0; i < options.length; i++) {
-            if (options[i].selected) {
-                roommatesArr.push(options[i].value);
-            }
-        }
-    }());
-    console.log(roommatesArr);
+  event.preventDefault();
+  var options = event.target.rmOptions;
+  var roommatesArr = [];
+  console.log(options);
+  (function() {
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        roommatesArr.push(options[i].value);
+      }
+    }
+  }());
+  console.log(roommatesArr);
 
-    var name = event.target.billname.value;
-    var amountDue = parseFloat(event.target.amount.value);
-    var frequency = parseInt(event.target.frequency.value);
-    var category = event.target.category.value;
-    var dueDate = event.target.duedate.value;
-    var newBill = new Bill(roommatesArr, name, amountDue, frequency, category, dueDate);
-    bills.push(newBill);
-    newBill.splitBill();
-    new LocalStorage('BillsArray', bills).saveObj();
+  var name = event.target.billname.value;
+  var amountDue = parseFloat(event.target.amount.value);
+  var frequency = parseInt(event.target.frequency.value);
+  var category = event.target.category.value;
+  var dueDate = event.target.duedate.value;
+  var newBill = new Bill(roommatesArr, name, amountDue, frequency, category, dueDate);
+  bills.push(newBill);
+  newBill.splitBill();
+  new LocalStorage('BillsArray', bills).saveObj();
 }
 // function House(houseUser, housePassword) {
 //   this.houseUser = houseUser;
@@ -63,13 +63,13 @@ function newBillHandler(event) {
 // }
 
 function Bill(roommates, name, amountDue, frequency, category, dueDate) {
-    this.roommates = roommates;
-    this.name = name;
-    this.amountDue = amountDue;
-    this.frequency = frequency;
-    this.category = category;
-    this.paid; //handle later
-    this.dueDate = dueDate;
+  this.roommates = roommates;
+  this.name = name;
+  this.amountDue = amountDue;
+  this.frequency = frequency;
+  this.category = category;
+  this.paid; //handle later
+  this.dueDate = dueDate;
 }
 
 
@@ -85,7 +85,7 @@ Bill.prototype.splitBill = function() {
   for (var i = 0; i < div; i++) {
     if (roommate.indexOf(this.roommates[i])) {
       var splitAmnt = this.amountDue / div;
-      var billObj = new newRmBill(this.name, splitAmnt, this.dueDate, this.category);
+      var billObj = new NewRmBill(this.name, splitAmnt, this.dueDate, this.category);
 
       function findRm() {
         return this.roommates[i] === roommate.userID;
