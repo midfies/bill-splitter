@@ -13,11 +13,30 @@ header {
   border-radius: 1em;
   max-width: 60%;
   background-image: url(http://wallpapercave.com/wp/s7R41PL.jpg);
+  /*transform: rotate(-3deg);*/
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
-  background-image: url(https://pbs.twimg.com/profile_images/378800000444748483/f41d4dd5111de20d1c1265e538cee4a9_400x400.png);
-  z-index: -1;
+
+}
+
+section {
+  background-color: lightgray;
+  border-radius: 1em;
+  box-shadow: 5px 5px 3px #888888;
+  max-width: 93%;
+
+}
+
+section:hover {
+  background-color: darkgray;
+  transition-property: background;
+  transition-duration: 1s;
+  transition-timing-function: linear;
 }
 
 p {
@@ -30,19 +49,23 @@ p {
   margin: 2em;
   position: relative;
   left: 8em;
+  background-image: repeating-linear-gradient(gray, darkgray);
 }
 
 form {
   background-color: lightgray;
   box-shadow: 5px 5px 3px #888888;
   border-radius: 1em;
+  transition-property: background;
+  transition-duration: 1s;
+  transition-timing-function: linear;
 }
 
 form:hover, form:active {
   background-color: darkgray;
 }
 
-.roommateForm {
+#addRoomateForm {
   text-align: center;
   padding: 1em;
 }
@@ -56,7 +79,15 @@ footer {
   text-align: center;
   margin-top: 2.5em;
   background-color: darkgray;
+  background: linear-gradient(to right, lightblue, green);
   font-size: 1.2em;
   border-radius: 1em;
   max-width: 60%;
 }
+
+@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
