@@ -2,21 +2,17 @@
 
 var roommates = [];
 
-
 if (localStorage.getItem('roommates')){
   console.log('Fetching LS...');
   roommates = JSON.parse(localStorage.getItem('roommates'));
 } else {
-  // new Roommate('Marc');
-  // new Roommate('Kenneth');
-  // new Roommate('Casey');
-  // new Roommate('Jed');
+  //there are no roommates in the list
 }
 
 function Roommate(firstName, lastName, email){
   this.firstName = firstName;
   this.lastName = lastName;
-  this.userID = (firstName + lastName).toLowerCase();
+  this.userID = ((firstName + lastName).toLowerCase()).replace(/[^a-zA-Z ]/g, '');
   this.email = email;
   roommates.push(this);
 }
@@ -81,12 +77,6 @@ addRoomateForm.addEventListener('submit', function(event){
 });
 
 display();
-
-
-
-
-
-
 
 //Functions for testing/ not added to final
 function resetLS(){
