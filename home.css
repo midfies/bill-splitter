@@ -16,6 +16,12 @@ header {
   /*transform: rotate(-3deg);*/
 }
 
+nav {
+  max-width: 10%;
+  display: inline-block;
+  text-decoration: none;
+}
+
 h1 {
   color: black;
   font-size: 1.5em;
