@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <!-- <link rel="stylesheet" type="text/css" href="home.css"> -->
     <title>Homepage</title>
     <header> Header </header>
   </head>
@@ -29,9 +29,32 @@
      <ul id="roommatesList"></ul>
    </section>
       <p> Bill section </p>
-      <form class="billForm"> Add/Remove : <input type="button" name="Add/Remove" value="Add/Remove bills">
+      <!-- <form class="billForm"> Add/Remove : <input type="button" name="Add/Remove" value="Add/Remove bills"> -->
+      <div class="div-form">
+          <form class="bill-form" id="bill-form">
+              <label for="rmOptions">Select Applicable Roommates and bill percentage</label><br>
+              <select multiple name="rmOptions" id="rmOptions"></select><br>
+
+              <label for="billname">Bill Name:</label>
+              <input type="text" name="billname"><br>
+              <label for="amount">Amount:</label>
+              <input type="text" name="amount"><br>
+              <label for="frequency">Frequency:</label>
+              <input type="text" name="frequency"><br>
+              <label for="category">Category:</label>
+              <input type="text" name="category"><br>
+              <label for="duedate">Due Date:</label>
+              <input type="date" name="duedate"><br>
+              <input type="submit" name="submit" value="Submit">
+          </form>
+      </div>
+      <section>
+        <ul id="billList"></ul>
+      </section>
   </div>
   <script src="roommate.js"></script>
+  <script src="elements.js"></script>
+  <script src="bills.js"></script>
   </body>
   <footer>Footer content Copyright (c) 2016 Copyright Holder All Rights Reserved.
   </footer>
