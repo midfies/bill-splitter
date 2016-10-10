@@ -8,7 +8,7 @@ header {
   font-size: 3em;
   margin-bottom: .5em;
   background-color: darkgray;
-  font-family: sans-serif;
+  font-family: Helvetica;
   box-shadow: 5px 5px 3px #888888;
   border-radius: 1em;
   max-width: 60%;
@@ -16,12 +16,22 @@ header {
   /*transform: rotate(-3deg);*/
 }
 
+h1 {
+  color: black;
+  font-size: 1.5em;
+}
+
 button {
   cursor: pointer;
 }
 
 body {
+  padding: 1em;
+}
 
+div {
+  background-image: url(http://www.globalchange.gov/sites/globalchange/files/ocean-reef-fish-noC.jpg);
+  z-index: -1;
 }
 
 section {
@@ -29,7 +39,7 @@ section {
   border-radius: 1em;
   box-shadow: 5px 5px 3px #888888;
   max-width: 93%;
-
+  text-decoration: none;
 }
 
 section:hover {
@@ -49,7 +59,8 @@ p {
   margin: 2em;
   position: relative;
   left: 8em;
-  background-image: repeating-linear-gradient(gray, darkgray);
+  background-image: repeating-linear-gradient(lightgray, darkgray);
+  box-shadow: 5px 5px 3px #888888;
 }
 
 form {
@@ -59,6 +70,20 @@ form {
   transition-property: background;
   transition-duration: 1s;
   transition-timing-function: linear;
+  animation-duration: 2.3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
 
 form:hover, form:active {
