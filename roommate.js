@@ -79,7 +79,7 @@ addRoomateForm.addEventListener('submit', function(event){
 display();
 
 //Functions for testing/ not added to final
-function resetLS(){
-  localStorage.clear();
-}
-RLS.addEventListener('click', resetLS);
+// function resetLS(){
+//   localStorage.clear();
+// }
+//RLS.addEventListener('click', resetLS);
