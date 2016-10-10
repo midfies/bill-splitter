@@ -1,0 +1,21 @@
+* {
+  max-width: 90%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 2em;
+  background-color: darkgray;
+  text-align: center;
+}
+
+p {
+  padding: 2em;
+  font-size: 1em;
+}
+
+footer {
+  background-color: darkgray;
+  text-align: center;
+  font-size: 1.5em;
+}

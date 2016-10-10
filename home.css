@@ -1,26 +1,42 @@
 * {
-  margin: 0;
-  padding: 0;
+  margin: auto;
+  max-width: 90%;
+  background-color: white;
 }
 
 header {
   text-align: center;
-  margin-bottom: 100px;
+  font-size: 3em;
+  margin-bottom: 1em;
+  background-color: gray;
 }
 
-#roommates {
-text-align: center;
+p {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+form {
+  background-color: lightgray;
+}
+
+form:hover {
+  background-color: darkgray;
 }
 
 #roommateForm {
   text-align: center;
+  padding: 1em;
 }
 
-#billForm {
-  outline: 1px solid black;
+.billForm {
+  padding: 1em;
+  text-align: center;
 }
 
 footer {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 2em;
+  background-color: darkgray;
+  font-size: 1.5em;
 }
