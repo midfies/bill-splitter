@@ -1,7 +1,6 @@
 * {
   margin: auto;
   max-width: 90%;
-  background-color: white;
 }
 
 header {
@@ -10,24 +9,35 @@ header {
   margin-bottom: .5em;
   background-color: darkgray;
   font-family: sans-serif;
+  box-shadow: 5px 5px 3px #888888;
+  border-radius: 1em;
+  max-width: 60%;
 }
 
 body {
-  background-image: url(http://vignette4.wikia.nocookie.net/clubpenguin/images/d/d8/Ninja_Old_Header.png/revision/latest?cb=20140616202121);
-  z-index: -1
+  background-image: url(https://pbs.twimg.com/profile_images/378800000444748483/f41d4dd5111de20d1c1265e538cee4a9_400x400.png);
+  z-index: -1;
 }
 
 p {
   text-align: center;
   font-size: 1.5em;
   padding: 1.2em;
+  background-color: #e6e6e6;
+  max-width: 50%;
+  border-radius: 1em;
+  margin: 2em;
+  position: relative;
+  left: 7.5em;
 }
 
 form {
   background-color: lightgray;
+  box-shadow: 5px 5px 3px #888888;
+  border-radius: 1em;
 }
 
-form:hover {
+form:hover, form:active {
   background-color: darkgray;
 }
 
@@ -43,7 +53,8 @@ form:hover {
 
 footer {
   text-align: center;
-  margin-top: 1.5em;
+  margin-top: 2.5em;
   background-color: darkgray;
   font-size: 1.2em;
+  border-radius: 1em;
 }

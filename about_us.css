@@ -4,13 +4,53 @@
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2.5em;
   background-color: darkgray;
   text-align: center;
+  border-radius: 1em;
+  max-width: 60%;
+  font-family: sans-serif;
+  margin-bottom: .5em;
+}
+
+body {
+  padding: 2em;
+}
+
+img {
+  border-radius: 1em;
+}
+
+#one {
+  float: right;
+  box-shadow: 5px 5px 3px #888888;
+  margin: 1em;
+}
+
+#two {
+  float: left;
+  box-shadow: 5px 5px 3px #888888;
+  margin: 1em;
+}
+
+#three {
+  float: right;
+  box-shadow: 5px 5px 3px #888888;
+  margin: 1em;
+}
+
+#four {
+  float: left;
+  box-shadow: 5px 5px 3px #888888;
+  margin: 1em;
+}
+
+img:hover {
+  background-color: darkgray;
 }
 
 p {
-  padding: 2em;
+  padding: 3em;
   font-size: 1em;
   max-width: 80%;
 }
@@ -19,4 +59,7 @@ footer {
   background-color: darkgray;
   text-align: center;
   font-size: 1.2em;
+  border-radius: 1em;
+  max-width: 60%;
+  margin-top: 3em;
 }
