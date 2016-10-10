@@ -7,13 +7,20 @@
 header {
   text-align: center;
   font-size: 3em;
-  margin-bottom: 1em;
-  background-color: gray;
+  margin-bottom: .5em;
+  background-color: darkgray;
+  font-family: sans-serif;
+}
+
+body {
+  background-image: url(http://vignette4.wikia.nocookie.net/clubpenguin/images/d/d8/Ninja_Old_Header.png/revision/latest?cb=20140616202121);
+  z-index: -1
 }
 
 p {
   text-align: center;
   font-size: 1.5em;
+  padding: 1.2em;
 }
 
 form {
@@ -24,7 +31,7 @@ form:hover {
   background-color: darkgray;
 }
 
-#roommateForm {
+.roommateForm {
   text-align: center;
   padding: 1em;
 }
@@ -36,7 +43,7 @@ form:hover {
 
 footer {
   text-align: center;
-  margin-top: 2em;
+  margin-top: 1.5em;
   background-color: darkgray;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
