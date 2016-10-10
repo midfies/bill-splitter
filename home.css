@@ -12,6 +12,7 @@ header {
   box-shadow: 5px 5px 3px #888888;
   border-radius: 1em;
   max-width: 60%;
+  background-image: url(http://wallpapercave.com/wp/s7R41PL.jpg);
 }
 
 body {
@@ -28,7 +29,7 @@ p {
   border-radius: 1em;
   margin: 2em;
   position: relative;
-  left: 7.5em;
+  left: 8em;
 }
 
 form {
@@ -57,4 +58,5 @@ footer {
   background-color: darkgray;
   font-size: 1.2em;
   border-radius: 1em;
+  max-width: 60%;
 }

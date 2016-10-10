@@ -11,6 +11,7 @@ h1 {
   max-width: 60%;
   font-family: sans-serif;
   margin-bottom: .5em;
+  background-image: url(http://wallpapercave.com/wp/s7R41PL.jpg);
 }
 
 body {
@@ -24,25 +25,23 @@ img {
 #one {
   float: right;
   box-shadow: 5px 5px 3px #888888;
-  margin: 1em;
 }
 
 #two {
   float: left;
   box-shadow: 5px 5px 3px #888888;
-  margin: 1em;
+  margin: .3em;
 }
 
 #three {
   float: right;
   box-shadow: 5px 5px 3px #888888;
-  margin: 1em;
 }
 
 #four {
   float: left;
   box-shadow: 5px 5px 3px #888888;
-  margin: 1em;
+  margin: .3em;
 }
 
 img:hover {
@@ -53,6 +52,16 @@ p {
   padding: 3em;
   font-size: 1em;
   max-width: 80%;
+  border: 1px solid black;
+  border-radius: 2em;
+  margin: 1em;
+}
+
+p:hover {
+  background-color: cyan;
+  background-image: url(http://wallpapercave.com/wp/oKeqrBc.jpg);
+  z-index: -1;
+  color: white;
 }
 
 footer {
