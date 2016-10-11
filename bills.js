@@ -4,7 +4,6 @@ var houseUser = [];
 var roommate = [];
 var bills = [];
 
-
 if (localStorage.getItem('roommates')) {
     console.log('Fetching LS...');
     roommate = JSON.parse(localStorage.getItem('roommates'));
@@ -18,7 +17,6 @@ if (localStorage.getItem('roommates')) {
         { userID: 'jasonchu', firstName: 'Jason', lastName: 'Chu', email: 'jchu@gmail.com', unpaid: [] },
     ];
 }
-
 
 (function roommateSelect() {
     var parent = document.getElementById('rmOptions');
