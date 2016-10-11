@@ -16,33 +16,36 @@
     <h1>Welcome</h1>
     <h2>The most convienant and easiet way to split household bills!</h2>
 
+    <div id="right">
+      <form id="signUpForm" >
+          <fieldset>
+          <legend> Sign Up Here  </legend>
+            Create User ID:<input type="text" name="user_id" />
+            <br>
+            Create Password:<input type="password" name="password" />
+            <br>
+            Verify Password:<input type="password" name="verify">
+            <button type="submit" name="button"> Sign Up </button>
+        </form>
+          </fieldset>
+    </div>
+
     <div id ="left">
     <form id="logInForm">
 
       <fieldset>
           <legend> Enter LogIn Here </legend>
-          User ID :  <input type="text" name="user_id" />
+          User ID :  <input type="text" name="user_id" id="logInUserName"/>
           <br>
-          Password:  <input type="password" name="password" />
+          Password:  <input type="password" name="password" id="logInPassword" />
     </form>
-    <button type="button" name="Login"> Log In</button>
+    <button type="submit" name="Login"> Log In</button>
       </fieldset>
     </div>
 
-  <div id="right">
-    <form id="signUpForm" >
-      <fieldset>
-        <legend> Sign Up Here  </legend>
-          Create User ID :  <input type="text" name="user_id" />
-          <br>
-          Create Password:  <input type="password" name="password" />
-          <br>
-          Verify Password   <input type="verify" name="verify" value="">
-          <button type="button" name="button"> Sign Up </button>
-    </form>
-    </fieldset>
-  </div>
+
   </body>
   <footer> &copy 2016 Ken, Marc, Jed, and Casey. All rights reserved. </footer>
   </div>
+  <script src="index.js" charset="utf-8"></script>
 </html>
