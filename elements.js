@@ -132,11 +132,8 @@ Object.keys(this.navObject).forEach(key => {
     parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
 })
 
-<<<<<<< HEAD
 //var billTable = new Table().populate();
-=======
 var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
 var tableData = JSON.parse(localStorage.getItem('Bills'));
 console.log(tableData);
 var billTable = new Table(headData, tableData, 'bill-table').populate();
->>>>>>> master

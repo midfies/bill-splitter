@@ -26,6 +26,15 @@ h1 {
     font-size: 1.5em;
     clear: both;
 
+
+  color: black;
+  font-size: 1.5em;
+  clear: both;
+
+    color: black;
+    font-size: 1.5em;
+    clear: both;
+
 }
 
 button {
@@ -37,8 +46,8 @@ body {
 }
 
 div {
-    background-image: url(http://www.globalchange.gov/sites/globalchange/files/ocean-reef-fish-noC.jpg);
-    z-index: -1;
+    /*background-image: url(http://www.globalchange.gov/sites/globalchange/files/ocean-reef-fish-noC.jpg);
+    z-index: -1;*/
 }
 
 section {
@@ -140,6 +149,9 @@ footer {
     color: white;
     margin: 0 0.5em;
     list-style: none;
+}
+table td, table th{
+  outline: 1px solid red;
 }
 
 @media (min-width:320px) {
