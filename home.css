@@ -110,6 +110,26 @@ footer {
   max-width: 60%;
 }
 
+.nav-relative {
+  position: relative; 
+}
+
+.nav {
+  position: fixed;
+  border-radius: 5px;
+  border: 3px solid white;
+  background: grey;
+  padding: 5px;
+  width: 90px;
+}
+
+.nav a {
+    font-size: 0.9em;
+    display: block;
+    color: white;
+    margin: 0 0.5em;
+}
+
 @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }
 @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
 @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
