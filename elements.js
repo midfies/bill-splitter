@@ -118,5 +118,5 @@ class Table {
         this.row();
     }
 }
-
-var billTable = new Table().populate();
+//
+// var billTable = new Table().populate();

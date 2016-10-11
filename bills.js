@@ -13,8 +13,11 @@ if (localStorage.getItem('roommates')) {
     console.log('Fetching LS...');
     roommate = JSON.parse(localStorage.getItem('roommates'));
     console.log(roommate);
+<<<<<<< HEAD
 
 >>>>>>> b0bae12095f35f03eecdc76f93abeea5f3d9e16c
+=======
+>>>>>>> 3d052da2e01e1d58f66a744b14bd85345c6f060a
 } else {
   //there are no roommates in the list
 }
@@ -44,6 +47,7 @@ var billForm = document.getElementById('bill-form');
 billForm.addEventListener('submit', newBillHandler);
 
 function newBillHandler(event) {
+<<<<<<< HEAD
   event.preventDefault();
   var options = event.target.rmOptions;
   var roommatesArr = [];
@@ -66,6 +70,39 @@ function newBillHandler(event) {
   bills.push(newBill);
   newBill.splitBill();
   new LocalStorage('BillsArray', bills).saveObj();
+=======
+    event.preventDefault();
+    var options = event.target.rmOptions;
+    var roommatesArr = [];
+    (function() {
+        for (var i = 0; i < options.length; i++) {
+            if (options[i].selected) {
+                roommatesArr.push(options[i].id);
+            }
+        }
+    }());
+
+    //retrieve form values
+    var name = event.target.billname.value;
+    var amountDue = parseFloat(event.target.amount.value);
+    var frequency = parseInt(event.target.frequency.value);
+    var category = event.target.category.value;
+    var dueDate = event.target.duedate.value;
+
+    //Creatomg Bill Object
+    var newBill = new Bill(roommatesArr, name, amountDue, frequency, category, dueDate);
+
+    //Updating data structures
+    bills.push(newBill);
+    newBill.splitBill();
+
+    //Saving to local storage
+    localStorage.setItem('Bills', JSON.stringify(bills));
+    localStorage.setItem('roommates', JSON.stringify(roommate));
+
+    //clear form
+    billForm.reset();
+>>>>>>> 3d052da2e01e1d58f66a744b14bd85345c6f060a
 }
 // function House(houseUser, housePassword) {
 //   this.houseUser = houseUser;
