@@ -14,8 +14,12 @@ function Roommate(firstName, lastName, email){
   this.lastName = lastName;
   this.userID = ((firstName + lastName).toLowerCase()).replace(/[^a-zA-Z ]/g, '');
   this.email = email;
+<<<<<<< HEAD
   this.unpaid = [];
   this.history = [];
+=======
+  this.unpaid = []; 
+>>>>>>> 3e6db9e686e92a9f87ff1cf31b6a42fb99294791
   roommates.push(this);
 }
 

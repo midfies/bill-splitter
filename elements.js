@@ -82,41 +82,62 @@ var billForm = [
 //roommates, name, amountDue, frequency, category, dueDate)
 
 class Table {
-    constructor(data, head, parentEl) {
-        this.data = data;
-        this.head = head;
+    constructor(headData, tableData, parentEl) {
+        this.tableData = tableData;
+        this.headData = headData;
         this.parentEl = parentEl;
     }
 
     head() {
         let parent = document.getElementById(this.parentEl);
         let tr = document.createElement('tr');
-        for (var i = 0; i < this.head.length; i++) {
+        for (var i = 0; i < this.headData.length; i++) {
             let th = document.createElement('th');
-            th.textContent = this.head[i];
+            th.textContent = this.headData[i];
             tr.appendChild(th);
         }
         parent.appendChild(tr);
     }
 
-    row() {
-        for (var i = 0; i < this.data.length; i++) {
-            let tr = document.createElement('tr');
-            for (var j = 0; j < this.head.length; j++) {
-                let td = document.createElement('td');
-                if (j === 0) {
-                    td.innerHTML = this.data[i];
-                }
+    billRow() {
+        let parent = document.getElementById(this.parentEl);
+        console.log(this.tableData);
+        var tr = document.createElement('tr');
+        var data = Object.keys(this.tableData[i]).forEach(key => {
+            var td = document.createElement('td');
+            td.innerHTML = this.tableData[key];
+            tr.appendChild(td);
+        })
+        parent.appendChild(tr);
+        /*
+        for (var i = 0; i < this.tableData.length; i++) {
+            var tr = document.createElement('tr');
+            var data = Object.keys(this.tableData[i]).forEach(key => {
+                var td = document.createElement('td');
+                td.innerHTML = this.tableData[key];
                 tr.appendChild(td);
-            }
+            })
             parent.appendChild(tr);
+            */
         }
-    }
 
     populate() {
         this.head();
-        this.row();
+        this.billRow();
     }
 }
+<<<<<<< HEAD
 //
 // var billTable = new Table().populate();
+=======
+
+Object.keys(this.navObject).forEach(key => {
+    let li = document.createElement('li');
+    parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
+})
+
+var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
+var tableData = JSON.parse(localStorage.getItem('Bills'));
+console.log(tableData);
+var billTable = new Table(headData, tableData, 'bill-table').populate();
+>>>>>>> 3e6db9e686e92a9f87ff1cf31b6a42fb99294791

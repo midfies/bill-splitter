@@ -29,6 +29,7 @@ var billForm = document.getElementById('bill-form');
 billForm.addEventListener('submit', newBillHandler);
 
 function newBillHandler(event) {
+
   event.preventDefault();
   var options = event.target.rmOptions;
   var roommatesArr = [];
