@@ -3,10 +3,8 @@
 //********************attach DOM to JS - Set Up Data****************************
 var theSignUpForm = document.getElementById('signUpForm');
 var theLoginForm = document.getElementById('logInForm');
-console.log(theLoginForm);
 //******************************************************************************
-
-
+var formValues;
 //*****************add how it hears the click to run function*******************
 
 theSignUpForm.addEventListener('submit',storeSignUpData);
@@ -35,7 +33,7 @@ function storeSignUpData(event) {   //also called a callback.
   verify:verifyPassword};
 
   var formValuesStringed = JSON.stringify(formValues);
-  console.log(formValuesStringed);
+
   localStorage.setItem('signUpValues', formValuesStringed);
 
   if (formValues.verify === formValues.password) {
@@ -46,14 +44,28 @@ function storeSignUpData(event) {   //also called a callback.
   }
 }
 //**********************Log In Function*****************************************
-// when I press the Log in button, want the computer to see if the key:value is present in
-// localStorage and then parse it out. If it's there, go to the next page. If there is not a match,
-// alert, "this user name /pw combo does not match."
-  function signIn (event) {
+// when I press the Log in button, want the computer to see if the key:value is
+// present in localStorage and then parse it out. If it's there, go to the next
+// page. If there is not a match, alert, "this user name /pw combo does not match."
+
+function signIn (event) {
   event.preventDefault();
   var myNameIs = event.target.elements.login_id.value;
   var myPassword = event.target.elements.mypassword.value;
-  var logInFormValues = {login_id:myNameIs, mypassword:myPassword};
-console.log(logInFormValues);
-  // if () }
+  var logInValues = {login_id: myNameIs, mypassword:myPassword};
+  var getFromStorage = localStorage.getItem('signUpValues');
+
+  var formValues = JSON.parse(getFromStorage);
+
+  console.log(formValues);
+  console.log(formValues);
+
+  if (logInValues.login_id === formValues.user_id
+  && logInValues.mypassword === formValues.password) {
+    console.log('user has logged in correctly');
+  }
+  else {
+    console.log('user info not found');
+  }
+
 }
