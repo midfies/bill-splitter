@@ -120,4 +120,4 @@ class Table {
 }
 
 
-var billTable = new Table().populate(); 
+var billTable = new Table().populate();
