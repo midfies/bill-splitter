@@ -74,11 +74,11 @@ form {
   background-color: lightgray;
   box-shadow: 5px 5px 3px #888888;
   border-radius: 1em;
-  transition-property: background;
+  /*transition-property: background;
   transition-duration: 1s;
   transition-timing-function: linear;
   animation-duration: 2.3s;
-  animation-name: slidein;
+  animation-name: slidein;*/
 }
 
 .div-form {
