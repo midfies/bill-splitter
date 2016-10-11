@@ -84,9 +84,12 @@ footer {
 }
 
 .nav {
+    display: block;
     position: fixed;
+    top: 30px;
+    right: 30px;
     border-radius: 5px;
-    border: 3px solid white;
+    border: 3px solid black;
     background: grey;
     padding: 5px;
     width: 90px;
@@ -97,6 +100,7 @@ footer {
     display: block;
     color: white;
     margin: 0 0.5em;
+    list-style: none;
 }
 
 @media (min-width:320px) {
