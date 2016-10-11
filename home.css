@@ -19,7 +19,7 @@ header {
 h1 {
   color: black;
   font-size: 1.5em;
-  clear: both; 
+  clear: both;
 }
 
 button {
@@ -133,6 +133,9 @@ footer {
     color: white;
     margin: 0 0.5em;
     list-style: none;
+}
+table td, table th{
+  outline: 1px solid red;
 }
 
 @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }

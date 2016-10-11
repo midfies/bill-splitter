@@ -5,11 +5,13 @@ var roommate = [];
 var bills = [];
 
 if (localStorage.getItem('roommates')) {
-  console.log('Fetching LS...');
+  console.log('Fetching Roommate LS...');
   roommate = JSON.parse(localStorage.getItem('roommates'));
   console.log(roommate);
-} else {
-  //there are no roommates in the list
+}
+if (localStorage.getItem('Bills')){
+  console.log('Fetching Bills LS...');
+  bills = JSON.parse(localStorage.getItem('Bills'));
 }
 
 (function roommateSelect() {
@@ -46,26 +48,25 @@ function newBillHandler(event) {
   var dueDate = event.target.duedate.value;
 
   //Creatomg Bill Object
-  var newBill = new Bill(roommatesArr, name, amountDue, frequency, category, dueDate);
+  if (name && amountDue && frequency && category && dueDate) {
+       //Creating Bill Object
+       var newBill = new Bill(roommatesArr, name, amountDue, frequency, category, dueDate, bills.length);
+       console.log(bills);
+       //Updating data structures
+       newBill.splitBill();
 
-  //Updating data structures
-  bills.push(newBill);
-  newBill.splitBill();
+       //Saving to local storage
+       localStorage.setItem('Bills', JSON.stringify(bills));
+       localStorage.setItem('roommates', JSON.stringify(roommate));
 
-  //Saving to local storage
-  localStorage.setItem('Bills', JSON.stringify(bills));
-  localStorage.setItem('roommates', JSON.stringify(roommate));
-
-  //clear form
-  billForm.reset();
+       //clear form
+       billForm.reset();
+   } else {
+     alert('Please fill out all fields for the bill!');
+   }
 }
-// function House(houseUser, housePassword) {
-//   this.houseUser = houseUser;
-//   this.housePassword = housePassword;
-//   houseUser.push(this);
-// }
 
-function Bill(roommates, name, amountDue, frequency, category, dueDate) {
+function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
   this.roommates = roommates;
   this.name = name;
   this.amountDue = amountDue;
@@ -73,70 +74,77 @@ function Bill(roommates, name, amountDue, frequency, category, dueDate) {
   this.category = category;
   this.paid; //handle later
   this.dueDate = dueDate;
-}
+  this.id = id;
+  bills.push(this);
 
-
-function NewRmBill(name, amountDue, dueDate, category) {
-  this.name = name;
-  this.amountDue = amountDue;
-  this.dueDate = dueDate;
-  this.category = category;
-}
-
-Bill.prototype.splitBill = function() {
-  var div = this.roommates.length;
-  for (var i = 0; i < div; i++) {
-    if (roommate.indexOf(this.roommates[i])) {
-      var splitAmnt = this.amountDue / div;
-      var billObj = new NewRmBill(this.name, splitAmnt, this.dueDate, this.category);
-
-      function findRm() {
-        return this.roommates[i] === roommate.userID;
+  this.splitBill = function() {
+    var div = this.roommates.length;
+    for (var i = 0; i < div; i++) {
+      if (roommate.indexOf(this.roommates[i])) {
+        var splitAmnt = this.amountDue / div;
+        var billObj = new IndividualBill(this.id, splitAmnt);
+        var rmIndex = roommate.findIndex(x => x.userID === this.roommates[i]);
+        console.log(roommate[rmIndex].unpaid);
+        roommate[rmIndex].unpaid.push(billObj);
+      } else {
+        return Error;
       }
-      console.log('find', roommate.find(findRm));
-
-            //roommate.indexOf(this.roommates[i]).unpaid;
     }
-  }
-};
+  };
+  Bill.prototype.removeBill = function() {
+    var billToDel = bills.indexOf(this.bills.name);
+    bills.splice(billToDel, 1);
+  };
 
-Bill.prototype.removeBill = function() {
-  var billToDel = bills.indexOf(this.bills.name);
-  bills.splice(billToDel, 1);
-};
-
-Bill.prototype.modifyBill = function() {
-//  var billToModify = bills.indexOf(this.bills.name);
-};
-
-function LocalStorage(key, obj) {
-  this.key = key;
-  this.obj = obj;
+  Bill.prototype.modifyBill = function() {
+    //  var billToModify = bills.indexOf(this.bills.name);
+  };
 }
 
-LocalStorage.prototype.saveObj = function() {
-  var objToJSON = JSON.stringify(this.obj);
-  console.log(objToJSON);
-  localStorage.setItem(this.key, this.objToJSON);
-};
 
-LocalStorage.prototype.getObj = function() {
-  var storedObj = localStorage.getItem(this.key);
-  var objToArr = JSON.parse(storedObj);
-  return objToArr;
-};
-
-LocalStorage.prototype.deleteObj = function() {
-  localStorage.removeItem(this.key);
-};
-
-function displayBills(){
-  billList.innerHTML = '';
-  for (var i = 0; i < bills.length; i++){
-    var ulElement = document.getElementById('billList');
-    var lineElement = document.createElement('li');
-    lineElement.textContent = 'Bill Name: ' + bills[i].name + ' Amount: ' + bills[i].amountDue + ' ' + bills[i].dueDate;
-    ulElement.appendChild(lineElement);
-  }
+function IndividualBill(id, amountDue) {
+  this.id = id;
+  this.amountDue = amountDue;
+  this.amountPaid = 0;
+  this.paid = false;
 }
-displayBills();
+
+function makeHeaderRow() {
+  var headings = ['Bill Name', 'Category', 'Due Date', 'Amount Due']
+  var table = document.getElementById('billTable');
+  var rowElement = document.createElement('tr');
+  for (var i = 0; i < headings.length; i++){
+    var headElement = document.createElement('th');
+    headElement.textContent = headings[i];
+    rowElement.appendChild(headElement);
+  }
+  table.appendChild(rowElement);
+}
+function fillBillTable(){
+  var table = document.getElementById('billTable');
+  table.innerHTML = '';
+  makeHeaderRow();
+  var rowElement = document.createElement('tr');
+  var dataElement = document.createElement('td');
+  dataElement.textContent = 'Total';
+  rowElement.appendChild(dataElement);
+
+  for(var i = 0; i < bills.length; i++){
+    rowElement = document.createElement('tr');
+    dataElement = document.createElement('td');
+    dataElement.textContent = bills[i].name;
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    dataElement.textContent = bills[i].category;
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    dataElement.textContent = bills[i].dueDate;
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    dataElement.textContent = bills[i].amountDue;
+    rowElement.appendChild(dataElement);
+    table.appendChild(rowElement);
+  }
+
+}
+fillBillTable();
