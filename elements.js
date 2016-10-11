@@ -126,6 +126,10 @@ class Table {
         this.billRow();
     }
 }
+<<<<<<< HEAD
+//
+// var billTable = new Table().populate();
+=======
 
 Object.keys(this.navObject).forEach(key => {
     let li = document.createElement('li');
@@ -136,3 +140,4 @@ var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
 var tableData = JSON.parse(localStorage.getItem('Bills'));
 console.log(tableData);
 var billTable = new Table(headData, tableData, 'bill-table').populate();
+>>>>>>> 3e6db9e686e92a9f87ff1cf31b6a42fb99294791

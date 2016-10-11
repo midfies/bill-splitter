@@ -17,9 +17,15 @@ header {
 }
 
 h1 {
+<<<<<<< HEAD
+  color: black;
+  font-size: 1.5em;
+  clear: both;
+=======
     color: black;
     font-size: 1.5em;
     clear: both;
+>>>>>>> 3e6db9e686e92a9f87ff1cf31b6a42fb99294791
 }
 
 button {
@@ -134,6 +140,9 @@ footer {
     color: white;
     margin: 0 0.5em;
     list-style: none;
+}
+table td, table th{
+  outline: 1px solid red;
 }
 
 @media (min-width:320px) {
