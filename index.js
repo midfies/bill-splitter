@@ -1,21 +1,23 @@
 'use strict';
 
-//attach DOM to JS - Set Up Data
+//********************attach DOM to JS - Set Up Data****************************
 var theSignUpForm = document.getElementById('signUpForm');
-console.log(theSignUpForm);
-//add how it hears the click to run function
+var theLoginForm = document.getElementById('logInForm');
+console.log(theLoginForm);
+//******************************************************************************
+
+
+//*****************add how it hears the click to run function*******************
 
 theSignUpForm.addEventListener('submit',storeSignUpData);
+theLoginForm.addEventListener('submit', signIn);
+//******************************************************************************
 //event handler? event.target? if the above runs the function, how does the info
 // get into localStorage?????
 
-
-
 //need to store key:value data into array somehow and those values need to
 // match when they log in. This data needs to be JSON'd.
-var userNamePWCombo = {'user_id':'password'};
-
-console.log(userNamePWCombo); //this is coming back in console log as user_id: password. I want it to be what I enter into the text field.
+// console.log(userNamePWCombo); //this is coming back in console log as user_id: password. I want it to be what I enter into the text field.
 
 //also need to have a if/else statement that verifies same password and verification field. Do I do that by id, name, string?
 // if (//password and verify match) {
@@ -23,26 +25,35 @@ console.log(userNamePWCombo); //this is coming back in console log as user_id: p
 // }
 
 // else { // error prompt (password and verify did not match.)
-
-// }
-
+//***********************SignUp function****************************************
 function storeSignUpData(event) {   //also called a callback.
   event.preventDefault();
   var whoAmI = event.target.elements.user_id.value;
   var thePasswordIs = event.target.elements.password.value;
   var verifyPassword = event.target.elements.verify.value;
-  var formValues = {user_id: whoAmI, password: thePasswordIs, verify:verifyPassword};
+  var formValues = {user_id: whoAmI, password: thePasswordIs,
+  verify:verifyPassword};
 
   var formValuesStringed = JSON.stringify(formValues);
   console.log(formValuesStringed);
   localStorage.setItem('signUpValues', formValuesStringed);
 
   if (formValues.verify === formValues.password) {
-    console.log('user registered correctly');
+    // console.log('user registered correctly');
   }
   else {
-    console.log('passwords dont match');
+    // console.log('passwords dont match');
   }
 }
-
-function SignIn ()
+//**********************Log In Function*****************************************
+// when I press the Log in button, want the computer to see if the key:value is present in
+// localStorage and then parse it out. If it's there, go to the next page. If there is not a match,
+// alert, "this user name /pw combo does not match."
+  function signIn (event) {
+  event.preventDefault();
+  var myNameIs = event.target.elements.login_id.value;
+  var myPassword = event.target.elements.mypassword.value;
+  var logInFormValues = {login_id:myNameIs, mypassword:myPassword};
+console.log(logInFormValues);
+  // if () }
+}
