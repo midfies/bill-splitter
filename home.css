@@ -19,6 +19,7 @@ header {
 h1 {
   color: black;
   font-size: 1.5em;
+  clear: both; 
 }
 
 button {
@@ -111,23 +112,27 @@ footer {
 }
 
 .nav-relative {
-  position: relative; 
+    position: relative;
 }
 
 .nav {
-  position: fixed;
-  border-radius: 5px;
-  border: 3px solid white;
-  background: grey;
-  padding: 5px;
-  width: 90px;
+    display: block;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    border-radius: 5px;
+    border: 3px solid black;
+    background: grey;
+    padding: 5px;
+    width: 90px;
 }
 
 .nav a {
-    font-size: 0.9em;
+    font-size: 10px;
     display: block;
     color: white;
     margin: 0 0.5em;
+    list-style: none;
 }
 
 @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ }

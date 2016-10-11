@@ -4,13 +4,22 @@
 var roommate = [];
 var bills = [];
 
+<<<<<<< HEAD
 if (localStorage.getItem('roommates')){
   console.log('Fetching LS...');
   roommate = JSON.parse(localStorage.getItem('roommates'));
+=======
+if (localStorage.getItem('roommates')) {
+    console.log('Fetching LS...');
+    roommate = JSON.parse(localStorage.getItem('roommates'));
+    console.log(roommate);
+
+>>>>>>> b0bae12095f35f03eecdc76f93abeea5f3d9e16c
 } else {
   //there are no roommates in the list
 }
 
+<<<<<<< HEAD
 // var roommate = [
 //     { id: 'jedthompson', first: 'Jed', last: 'Thompson', email: 'jedlee2004@gmail.com', unpaid: [] },
 //     { id: 'firshtashefa', first: 'Firshta', last: 'Shefa', email: 'firshtashefa@gmail.com', unpaid: [] },
@@ -18,6 +27,8 @@ if (localStorage.getItem('roommates')){
 //     { id: 'jasonchu', first: 'Jason', last: 'Chu', email: 'jchu@gmail.com', unpaid: [] },
 // ];
 
+=======
+>>>>>>> b0bae12095f35f03eecdc76f93abeea5f3d9e16c
 (function roommateSelect() {
   var parent = document.getElementById('rmOptions');
   for (var i = 0; i < roommate.length; i++) {
