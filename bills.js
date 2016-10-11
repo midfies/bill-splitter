@@ -48,7 +48,7 @@ function newBillHandler(event) {
   var category = event.target.category.value;
   var dueDate = event.target.duedate.value;
 
-  //Creatomg Bill Object
+  //Creating Bill Object
   if (name && amountDue && frequency && category && dueDate) {
        //Creating Bill Object
        var newBill = new Bill(roommatesArr, name, amountDue, frequency, category, dueDate, bills.length);
@@ -92,12 +92,13 @@ function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
       }
     }
   };
-  Bill.prototype.removeBill = function() {
+  
+  this.removeBill = function() {
     var billToDel = bills.indexOf(this.bills.name);
     bills.splice(billToDel, 1);
   };
 
-  Bill.prototype.modifyBill = function() {
+  this.modifyBill = function() {
     //  var billToModify = bills.indexOf(this.bills.name);
   };
 }
@@ -146,6 +147,5 @@ function fillBillTable(){
     rowElement.appendChild(dataElement);
     table.appendChild(rowElement);
   }
-
 }
-fillBillTable();
+//fillBillTable();
