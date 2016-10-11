@@ -18,12 +18,14 @@ header {
 
 nav {
   max-width: 10%;
-  display: inline-block; 
+  display: inline-block;
+  text-align: left;
 }
 
 h1 {
   color: black;
   font-size: 1.5em;
+  text-align: center;
 }
 
 button {
@@ -77,6 +79,10 @@ form {
   transition-timing-function: linear;
   animation-duration: 2.3s;
   animation-name: slidein;
+}
+
+.div-form {
+  border-radius: 0em;
 }
 
 @keyframes slidein {
