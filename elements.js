@@ -18,6 +18,13 @@ class Navigation {
     }
 }
 
+var navObj = {
+    'Home': 'home.html',
+    'Roommate': 'roommate.html',
+    'About Us': 'about_us.html',
+    'Bills': 'bills.html'
+}
+var nav = new Navigation('navigation', navObj).navElements();
 
 /**
  * Creates a form
@@ -72,7 +79,8 @@ var billForm = [
  * @param parentEl: html element to place form in
  */
 
-/*
+//roommates, name, amountDue, frequency, category, dueDate)
+
 class Table {
     constructor(data, head, parentEl) {
         this.data = data;
@@ -109,4 +117,7 @@ class Table {
         this.head();
         this.row();
     }
-} */
+}
+
+
+var billTable = new Table().populate(); 

@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title></title>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <h1>Manage Roommates</h1>
-      <button id="RLS">Reset LS</button>
+        <h1>Manage Roommates</h1>
+        <button id="RLS">Reset LS</button>
     </header>
 
     <form id="addRoomateForm">
-    <fieldset>
-      <legend>Add Roommate</legend>
-      <label for="newFirstName">First Name:</label>
-      <input name="newFirstName" type="text"/><br/>
-      <label for="newLastName">Last Name:</label>
-      <input name="newLastName" type="text"/><br/>
-      <label for="newEmail">Email:</label>
-      <input name="newEmail" type="email"/><br/>
-      <button type="submit">Add</button>
-    </fieldset>
-  </form>
-  <section>
-    <ul id="roommatesList"></ul>
-  </section>
-
+        <fieldset>
+            <legend>Add Roommate</legend>
+            <label for="newFirstName">First Name:</label>
+            <input name="newFirstName" type="text" /><br/>
+            <label for="newLastName">Last Name:</label>
+            <input name="newLastName" type="text" /><br/>
+            <label for="newEmail">Email:</label>
+            <input name="newEmail" type="email" /><br/>
+            <button type="submit">Add</button>
+        </fieldset>
+    </form>
+    <section>
+        <ul id="roommatesList"></ul>
+    </section>
+    <script src="elements.js"></script>
     <script src="roommate.js"></script>
-  </body>
+</body>
+
 </html>
