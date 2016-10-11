@@ -8,7 +8,6 @@ if (localStorage.getItem('roommates')) {
     console.log('Fetching LS...');
     roommate = JSON.parse(localStorage.getItem('roommates'));
     console.log(roommate);
-
 } else {
     roommate = [
         { userID: 'jedthompson', firstName: 'Jed', lastName: 'Thompson', email: 'jedlee2004@gmail.com', unpaid: [] },
@@ -60,8 +59,8 @@ function newBillHandler(event) {
     newBill.splitBill();
 
     //Saving to local storage
-    new LocalStorage('Bills', bills).saveObj();
-    new LocalStorage('roommates', roommate).saveObj();
+    localStorage.setItem('Bills', JSON.stringify(bills));
+    localStorage.setItem('roommates', JSON.stringify(roommate));
 
     //clear form
     billForm.reset();
