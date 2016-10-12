@@ -25,6 +25,25 @@ var navObj = {
 }
 var nav = new Navigation('navigation', navObj).navElements();
 
+class Checkboxes {
+    constructor(parentEl, obj) {
+        this.parentEl = parentEl;
+        this.obj = obj;
+    }
+
+    create() {
+        let parent = document.getElementById(this.parentEl);
+        for (var i = 0; i < this.obj.length; i++) {
+            let inputChk = document.createElement('input');
+            inputChk.type = 'checkbox';
+            inputChk.name = 'Roommates';
+            inputChk.value = this.obj[i];
+        }
+        parent.appendChild(inputChk);
+    }
+}
+
+
 /**
  * Creates a form
  * @param elClass: class assigned to the Form element
@@ -125,16 +144,15 @@ class Table {
             */
     }
 
-    subTable(){
+    subTable() {
         let parent = document.getElementById(this.parentEl);
         for (var i = 0; i < this.tableData.length; i++) {
             var tr = document.createElement('tr');
-            for(var j = 0; j < this.tableData[i].unpaid.length; j++){
-                var td = document.createElement('td'); 
-                var unpaidArr = this.tableData[i].unpaid.indexOf(tableData[i].id); 
+            for (var j = 0; j < this.tableData[i].unpaid.length; j++) {
+                var td = document.createElement('td');
+                var unpaidArr = this.tableData[i].unpaid.indexOf(tableData[i].id);
                 td.innerHTML = this.tableData[i].unpaid.indexOf(tableData[i].id);
             }
-
 
             for (var key in tableData[i]) {
                 if (tableData[i].hasOwnProperty(key)) {
