@@ -31,14 +31,26 @@ function storeSignUpData(event) {   //also called a callback.
   houseArray.push(formValues);
   var houseArrayStringified = JSON.stringify(houseArray);
   localStorage.setItem('houseArray', houseArrayStringified);
-  // localStorage.setItem('signUpValues', formValuesStringed);
-  // var formValuesStringed = JSON.stringify(formValues);
-  if (formValues.verify === formValues.password) {
 
-  }
-  else {
+  for (var i = 0; i < houseArray.length; i++) {
+
+    if (formValues.verify === houseArray[i].verify
+      && formValues.password === houseArray[i].password
+    && formValues.user_id !== houseArray[i].user_id) {
+      document.write('Sign Up Successful. You will now be returned to Log In.');
+      setTimeout(function() {
+        window.location.href = 'index.html';
+      }, 3000);
+      break;}
+
+    if (formValues.user_id === houseArray[i].user_id) {
+      alert('This username already exists, please choose another.');
+      break;}
     // console.log('passwords dont match');
+    // }
   }
+
+
 }
 //**********************Log In Function*****************************************
 // when I press the Log in button, I want the computer to see if the key:value is
@@ -53,15 +65,17 @@ function signIn (event) {
   // var getFromStorage = localStorage.getItem('signUpValues');
   // var formValues = JSON.parse(getFromStorage);
   // console.log(formValues);
-
   for (var i = 0; i < houseArray.length; i++) {
 
     if (logInValues.login_id === houseArray[i].user_id
   && logInValues.mypassword === houseArray[i].password) {
       console.log('user has logged in correctly');
+      window.location.href = 'https://www.google.com';
     }
     else {
+      alert('User ID/Password not found. Please try again!');
       console.log('user info not found');
+      break;
     }
   }
 }
