@@ -18,6 +18,12 @@ function Roommate(firstName, lastName, email){
   this.history = [];
   roommates.push(this);
 }
+var roommateDiv = document.getElementById('roommateDiv');
+console.log(roommateDiv);
+roommateDiv.addEventListener('click',handleRoommateBillList);
+function handleRoommateBillList(event){
+  console.log(event);
+}
 
 function display(){
   roommatesList.innerHTML = '';
@@ -25,6 +31,7 @@ function display(){
     var ulElement = document.getElementById('roommatesList');
     var lineElement = document.createElement('li');
     lineElement.textContent = roommates[i].firstName + ' ' + roommates[i].lastName + ' - Email: ' + roommates[i].email + ' ';
+    lineElement.id = roommates[i].userID + 'a';
     var buttonElement = document.createElement('button');
     buttonElement.setAttribute('id', roommates[i].userID);
     buttonElement.setAttribute('class', 'removeRoommate');
