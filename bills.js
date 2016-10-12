@@ -217,14 +217,11 @@ var individualBillTable = document.getElementById('individualBillTable');
 billDiv.addEventListener('click', handleIndividualBillDisplay);
 
 function handleIndividualBillDisplay(event) {
-  //console.log(event);
   var billToDisplay = parseInt(event.target.id);
-  //loop through bills
   for (var i = 0; i < bills.length; i++){
     if (billToDisplay === bills[i].id){
       individualBillTable.innerHTML = '';
       buildIndividualBillHeader(billToDisplay);
-      //loop through roommates
       for (var j = 0; j < bills[i].roommates.length; j++){
         var rowElement = document.createElement('tr');
         var dataElement = document.createElement('td');
@@ -238,20 +235,9 @@ function handleIndividualBillDisplay(event) {
         dataElement.textContent = bills[i].roommates[j].amountOwed;
         rowElement.appendChild(dataElement);
         dataElement = document.createElement('td');
-        // var formElement = document.createElement('form');
-        // var inputElement =  document.createElement('INPUT');
-        // inputElement.setAttribute('type', 'text');
-        // inputElement.setAttribute('name', bills[i].roommates[j].name);
-        // inputElement.setAttribute('id', bills[i].id);
-        // formElement.appendChild(inputElement);
-        // var submitElement =  document.createElement('INPUT');
-        // submitElement.setAttribute('type', 'submit');
-        // formElement.appendChild(submitElement);
-        // dataElement.appendChild(formElement);
-        // rowElement.appendChild(dataElement);
+
         individualBillTable.appendChild(rowElement);
       }
-//Helper Functions for individual bills
 
       function buildIndividualBillHeader(billToDisplay){
         var headings = ['Bill: ' + bills[billToDisplay].name + ' | ','Category: ' + bills[billToDisplay].category  + ' | ' , 'Amount Due | '];
@@ -267,38 +253,6 @@ function handleIndividualBillDisplay(event) {
         rowElement.appendChild(headElement);
         individualBillTable.appendChild(rowElement);
       }
-
-      // individualBillList.addEventListener('submit', handlePayDown);
-      // function handlePayDown(event) {
-      //   console.log(event);
-      //   event.preventDefault();
-      //   // console.log(event);
-      //   // console.log('event.target : ' + event.target);
-      //   // console.log(unpaidIndex + ' : unpaidIndex');
-      //   // console.log(event.target[unpaidIndex]);
-      //   if (true){
-      //     var unpaidBillIndex = event.target[0].id;
-      //     console.log(unpaidBillIndex);
-      //     var roommateToEdit = event.target[0].name;
-      //     console.log(roommateToEdit);
-      //     var amountPaid = parseInt(event.target[0].value);
-      //     event.target[0].value = null;
-      //     if (unpaidBillIndex && roommateToEdit && amountPaid){
-      //       console.log('HERE');
-      //       for (var i = 0; i < bills[unpaidBillIndex].roommates.length; i++){
-      //         if(bills[unpaidBillIndex].roommates[i].name === roommateToEdit){
-      //           bills[unpaidBillIndex].roommates[i].paid += amountPaid;
-      //           alert('Paid ' + amountPaid);
-      //           var change = document.getElementById('amountOwed');
-      //           change.innerHTML = bills[i].roommates[j].amountOwed - bills[i].roommates[j].amountPaid;
-      //
-      //         }
-      //       }
-      //     }
-      //   }
-      //   localStorage.setItem('roommates', JSON.stringify(roommate));
-      // }
-      /////////////////////////////////////////////////////////////////////////////////////
     }
   }
   var closeBox = document.getElementById('closeBox');
