@@ -162,15 +162,16 @@
       return renderCalendar('calendarThis');
     }
 
+
   });
 
 })();
 
-// var clickerButton = document.getElementById('AddEvent');
-// var onButtonClick = function() {
-//   clickerButton.textContent = 'hey it worked';
-// };
-// clickerButton.addEventListener('click', onButtonClick);
-// clickerButton.addEventListener('click', function(){
-//   clickerButton.textContent = 'heyo';
-// });
+
+var element = document.getElementById('add_btn');
+element.onclick = function() {
+  console.log('test');
+  var e = document.createElement('input');
+  e.type = 'text';
+  this.parentNode.appendChild(e);
+};
