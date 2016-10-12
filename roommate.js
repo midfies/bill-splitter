@@ -53,6 +53,9 @@ function display(){
 }
 
 addRoomateForm.addEventListener('submit', function(event){
+  if (localStorage.getItem('roommates')){
+    roommates = JSON.parse(localStorage.getItem('roommates'));
+  }
   event.preventDefault();
   if (!event.target.newFirstName.value || !event.target.newLastName.value || !event.target.newEmail.value){
     return alert('Must fill in all values');
