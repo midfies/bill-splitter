@@ -5,9 +5,7 @@ var roommate = [];
 var bills = [];
 
 if (localStorage.getItem('roommates')) {
-  console.log('Fetching Roommate LS...');
   roommate = JSON.parse(localStorage.getItem('roommates'));
-  console.log(roommate);
 }
 if (localStorage.getItem('Bills')){
   console.log('Fetching Bills LS...');
@@ -73,17 +71,20 @@ function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
   this.amountDue = amountDue;
   this.frequency = frequency;
   this.category = category;
-  this.paid; //handle later
+  this.paid = 0; //handle later
   this.dueDate = dueDate;
   this.id = id;
   bills.push(this);
 
   this.splitBill = function() {
+    if (localStorage.getItem('roommates')) {
+      roommate = JSON.parse(localStorage.getItem('roommates'));
+    }
     var div = this.roommates.length;
     for (var i = 0; i < div; i++) {
       if (roommate.indexOf(this.roommates[i])) {
-        var splitAmnt = this.amountDue / div;
-        var billObj = new IndividualBill(this.id, splitAmnt);
+        var splitAmnt = (this.amountDue / div).toFixed(2);
+        var billObj = new IndividualBill(splitAmnt);
         var rmIndex = roommate.findIndex(x => x.userID === this.roommates[i]);
         console.log(roommate[rmIndex].unpaid);
         roommate[rmIndex].unpaid.push(billObj);
@@ -100,18 +101,22 @@ function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
   Bill.prototype.modifyBill = function() {
     //  var billToModify = bills.indexOf(this.bills.name);
   };
+  Bill.prototype.payDown = function(){
+    this.amountDue = this.amountDue - this.amountPaid;
+  };
 }
 
 
-function IndividualBill(id, amountDue) {
-  this.id = id;
+
+function IndividualBill(amountDue) {
+  this.id = bills.length -1;
   this.amountDue = amountDue;
   this.amountPaid = 0;
   this.paid = false;
 }
 
 function makeHeaderRow() {
-  var headings = ['Bill Name', 'Category', 'Due Date', 'Amount Due']
+  var headings = ['Bill Name', 'Category', 'Due Date', 'Amount Due', 'Total Bill']
   var table = document.getElementById('billTable');
   var rowElement = document.createElement('tr');
   for (var i = 0; i < headings.length; i++){
@@ -132,20 +137,109 @@ function fillBillTable(){
 
   for(var i = 0; i < bills.length; i++){
     rowElement = document.createElement('tr');
-    dataElement = document.createElement('td');
+    rowElement.setAttribute('id', bills[i].id);
+    dataElement = makeTD(bills[i].id);
     dataElement.textContent = bills[i].name;
     rowElement.appendChild(dataElement);
-    dataElement = document.createElement('td');
+    dataElement = makeTD(bills[i].id);
     dataElement.textContent = bills[i].category;
     rowElement.appendChild(dataElement);
-    dataElement = document.createElement('td');
+    dataElement = makeTD(bills[i].id);
     dataElement.textContent = bills[i].dueDate;
     rowElement.appendChild(dataElement);
-    dataElement = document.createElement('td');
+    dataElement = makeTD(bills[i].id);
+    dataElement.textContent = bills[i].amountPaid;
+    rowElement.appendChild(dataElement);
+    dataElement = makeTD(bills[i].id);
     dataElement.textContent = bills[i].amountDue;
     rowElement.appendChild(dataElement);
     table.appendChild(rowElement);
   }
-
 }
+function makeTD(id){
+  var dataElement = document.createElement('td');
+  dataElement.setAttribute('id', id);
+  return dataElement;
+}
+var billDiv = document.getElementById('billList');
+billDiv.addEventListener('click', function(event) {
+  var billToDisplay = parseInt(event.target.id);
+  for (var i = 0; i < bills.length; i++){
+    if (billToDisplay === bills[i].id){
+      var individualBillTable = document.getElementById('individualBillTable');
+      individualBillTable.innerHTML = '';
+      var headings = ['Bill: '+ bills[billToDisplay].name + ' | ','Category: ' + bills[billToDisplay].category  + ' | ', 'Amount Due | ', 'To Pay | ']
+      var rowElement = document.createElement('tr');
+      for (var i = 0; i < headings.length; i++){
+        var headElement = document.createElement('th');
+        headElement.textContent = headings[i];
+        rowElement.appendChild(headElement);
+      }
+      var headElement = document.createElement('th');
+      headElement.textContent = 'Close';
+      headElement.setAttribute('id', 'closeBox');
+      rowElement.appendChild(headElement);
+      individualBillTable.appendChild(rowElement);
+      for (var i = 0; i < roommate.length; i++){
+        var rowElement = document.createElement('tr');
+        var dataElement = document.createElement('td');
+        dataElement.textContent = roommate[i].firstName + ' ' + roommate[i].lastName;
+        rowElement.appendChild(dataElement);
+        dataElement = document.createElement('td');
+        rowElement.appendChild(dataElement);
+        dataElement = document.createElement('td');
+        var unpaidIndex = -1;
+        for (var j = 0; j < roommate[i].unpaid.length; j++){
+          if (roommate[i].unpaid[j].id === billToDisplay){
+            unpaidIndex = j;
+            break;
+          }
+          else {
+            unpaidIndex = -1;
+          }
+        }
+        if (unpaidIndex === -1){
+          dataElement.textContent = 'N/A';
+        } else{
+          dataElement.textContent = (roommate[i].unpaid[unpaidIndex].amountDue)-(roommate[i].unpaid[unpaidIndex].amountPaid);
+        }
+        rowElement.appendChild(dataElement);
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        dataElement = document.createElement('td');
+        var formElement = document.createElement('form');
+        var inputElement =  document.createElement('INPUT');
+        inputElement.setAttribute('type', 'text');
+        inputElement.setAttribute('name', i);
+        inputElement.setAttribute('id', unpaidIndex);
+        inputElement.setAttribute('class', 'payDown');
+        formElement.appendChild(inputElement);
+        var submitElement =  document.createElement('INPUT');
+        submitElement.setAttribute('type', 'submit');
+        formElement.appendChild(submitElement);
+        dataElement.appendChild(formElement);
+        rowElement.appendChild(dataElement);
+        individualBillTable.appendChild(rowElement);
+      }
+
+      individualBillList.addEventListener('submit', function(event) {
+      event.preventDefault();
+      var toEditID = event.target[unpaidIndex].id;
+      var toEditName = event.target[unpaidIndex].name;
+      var amountPaid = parseInt(event.target[unpaidIndex].value);
+      event.target[unpaidIndex].value = null;
+      roommate[toEditName].unpaid[toEditID].amountPaid += amountPaid;
+  
+
+      localStorage.setItem('roommates', JSON.stringify(roommate));
+      });
+      /////////////////////////////////////////////////////////////////////////////////////
+    }
+  }
+  var closeBox = document.getElementById('closeBox');
+    closeBox.addEventListener('click', function(){
+    individualBillTable.innerHTML = '';
+  });
+});
+
 fillBillTable();

@@ -126,18 +126,13 @@ class Table {
         this.billRow();
     }
 }
-<<<<<<< HEAD
+
+// Object.keys(this.navObject).forEach(key => {
+//     let li = document.createElement('li');
+//     parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
+// })
 //
-// var billTable = new Table().populate();
-=======
-
-Object.keys(this.navObject).forEach(key => {
-    let li = document.createElement('li');
-    parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
-})
-
-var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
-var tableData = JSON.parse(localStorage.getItem('Bills'));
-console.log(tableData);
-var billTable = new Table(headData, tableData, 'bill-table').populate();
->>>>>>> 3e6db9e686e92a9f87ff1cf31b6a42fb99294791
+// var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
+// var tableData = JSON.parse(localStorage.getItem('Bills'));
+// console.log(tableData);
+// var billTable = new Table(headData, tableData, 'bill-table').populate();
