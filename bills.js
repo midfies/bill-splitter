@@ -7,23 +7,22 @@ var bills = [];
 if (localStorage.getItem('roommates')) {
   roommate = JSON.parse(localStorage.getItem('roommates'));
 }
-if (localStorage.getItem('Bills')){
-  console.log('Fetching Bills LS...');
+if (localStorage.getItem('Bills')) {
   bills = JSON.parse(localStorage.getItem('Bills'));
 }
 
-
+//create checbox and text input for each roommate
 function createChkBox(parentEl, obj) {
   var parent = document.getElementById(parentEl);
   var div = document.createElement('div');
-  div.id = 'customAmnt';
+  div.id = "customAmnt";
   for (var i = 0; i < obj.length; i++) {
     var label = document.createElement('label');
     var inputChkBox = document.createElement('input');
     var text = document.createElement('input');
     inputChkBox.type = 'checkbox';
     inputChkBox.name = 'roommates';
-    inputChkBox.value = (obj[i].firstName + ' ' + obj[i].lastName);
+    inputChkBox.value = (obj[i].firstName + obj[i].lastName).toLowerCase();
     inputChkBox.checked = 'on';
     inputChkBox.id = 'check' + i;
     text.type = 'text';
@@ -45,6 +44,7 @@ customBill.addEventListener('change', customBillHandler);
 function customBillHandler(event) {
   event.preventDefault();
   var chkBox = event.target;
+  var customAmnt = document.getElementById(chkBox.id + 'txt');
   //disable txt input upon unchecking roommate;
   if (chkBox.checked) {
     customAmnt.style.visibility = 'visible';
@@ -54,11 +54,6 @@ function customBillHandler(event) {
     customAmnt.style.visibility = 'hidden';
       //customAmnt.style.display = 'none';
   }
-
-  if (chkBox.checked) {
-    console.log(chkBox);
-    var customAmnt = document.getElementById(chkBox.id + 'txt');
-  }
 }
 
 var billForm = document.getElementById('bill-form');
@@ -66,62 +61,78 @@ billForm.addEventListener('submit', newBillHandler);
 
 function newBillHandler(event) {
   event.preventDefault();
+  var totalPercent = 0;
   var roommates = [];
+  //retrieve roommates selected and custom bill amount and push to roommates[];
   (function() {
-    var totalPercent = 0;
-    var chkBoxArr = document.forms['bill-form'].elements.roommates;
     var customAmntArr = document.forms['bill-form'].elements.customAmnt;
+    var chkBoxArr = document.forms['bill-form'].elements.roommates;
+
+    //Filtering for the selected roommates form the checkbox array
+    var checked = [];
     for (var i = 0; i < chkBoxArr.length; i++) {
       if (chkBoxArr[i].checked) {
-        var percentageOwed;
-
-        if (customAmntArr[i].value) {
-          percentageOwed = parseFloat(customAmntArr[i].value) / 100;
-        } else {
-          percentageOwed = 1 / chkBoxArr.length;
-        }
-
-        var individualBill = {
-          name: chkBoxArr[i].value,
-          percentOwed: percentageOwed,
-          amountOwed: 0,
-          paid: 0,
+        var checkedObj = {
+          id: chkBoxArr[i].value,
+          customAmnt: customAmntArr[i].value,
         };
+        console.log('object of checked input', checkedObj);
+        checked.push(checkedObj);
+      };
+    }
+
+    for (var i = 0; i < checked.length; i++) {
+      var individualBill = {
+        name: checked[i].id,
+        percentOwed: 0,
+        amountOwed: 0,
+        paid: 0
+      };
+
+      if (checked[i].id && checked[i].customAmnt) {
+        individualBill.percentOwed = (parseFloat(checked[i].customAmnt) / 100).toFixed(2);
       }
-      if (totalPercent <= 100 || totalPercent <= 1) {
-        totalPercent += parseFloat(customAmntArr[i].value);
-        roommates.push(individualBill);
+      if (checked[i].id && !checked[i].customAmnt) {
+        individualBill.percentOwed = parseFloat(1 / checked.length).toFixed(2);
       }
-      if (totalPercent > 100) {
+
+      if (totalPercent <= 1) {
+        totalPercent += parseFloat(individualBill.percentOwed);
+      }
+      if (totalPercent > 1) {
         alert('Your total exceeds 100% of the bill!');
         break;
       }
+      console.log('Percent owed', individualBill);
+
+      roommates.push(individualBill);
     }
   }());
 
-  //retrieve form values
+    //retrieve form values
   var name = event.target.billname.value;
   var amountDue = parseFloat(event.target.amount.value);
   var frequency = parseInt(event.target.frequency.value);
   var category = event.target.category.value;
   var dueDate = event.target.duedate.value;
 
-  //Creatomg Bill Object
-  if (name && amountDue && frequency && category && dueDate) {
-       //Creating Bill Object
+    //Creating Bill Object
+  if (roommates && name && amountDue && frequency && category && dueDate) {
     var newBill = new Bill(roommates, name, amountDue, frequency, category, dueDate, bills.length);
-    console.log(bills);
-    //Updating data structures
     newBill.splitBill();
 
-    //Saving to local storage
+        //Saving to local storage
     localStorage.setItem('Bills', JSON.stringify(bills));
     localStorage.setItem('roommates', JSON.stringify(roommate));
 
-    //clear form
     billForm.reset();
   } else {
-    alert('Please fill out all fields for the bill!');
+    console.log(totalPercent);
+    if (totalPercent !== 1.00) {
+      alert('Please look at how you divided the bill!');
+    } else {
+      alert('Please fill out all fields for the bill!');
+    }
   }
 }
 
@@ -152,15 +163,16 @@ function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
       }
     }
   };
+
   Bill.prototype.removeBill = function() {
     var billToDel = bills.indexOf(this.bills.name);
     bills.splice(billToDel, 1);
   };
 
   Bill.prototype.modifyBill = function() {
-    //  var billToModify = bills.indexOf(this.bills.name);
+        //  var billToModify = bills.indexOf(this.bills.name);
   };
-  Bill.prototype.payDown = function(){
+  Bill.prototype.payDown = function() {
     this.amountDue = this.amountDue - this.amountPaid;
   };
 }
