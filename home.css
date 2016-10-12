@@ -18,6 +18,16 @@ header {
 
 h1 {
 
+
+  color: black;
+  font-size: 1.5em;
+  clear: both;
+
+    color: black;
+    font-size: 1.5em;
+    clear: both;
+
+
   color: black;
   font-size: 1.5em;
   clear: both;
@@ -161,12 +171,14 @@ table td, table th{
   outline: 1px solid red;
 }
 
+
 .addEvent {
   max-width: 20%;
   position: relative;
   top: 7em;
   right: 10em;
 }
+
 
 @media (min-width:320px) {
     /* smartphones, iPhone, portrait 480x320 phones */

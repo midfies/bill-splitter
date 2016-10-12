@@ -14,12 +14,15 @@ function Roommate(firstName, lastName, email){
   this.lastName = lastName;
   this.userID = ((firstName + lastName).toLowerCase()).replace(/[^a-zA-Z ]/g, '');
   this.email = email;
-<<<<<<< HEAD
+
   this.unpaid = [];
   this.history = [];
-=======
-  this.unpaid = []; 
->>>>>>> 3e6db9e686e92a9f87ff1cf31b6a42fb99294791
+
+  this.unpaid = [];
+
+  this.unpaid = [];
+  this.history = [];
+
   roommates.push(this);
 }
 
@@ -57,6 +60,9 @@ function display(){
 }
 
 addRoomateForm.addEventListener('submit', function(event){
+  if (localStorage.getItem('roommates')){
+    roommates = JSON.parse(localStorage.getItem('roommates'));
+  }
   event.preventDefault();
   if (!event.target.newFirstName.value || !event.target.newLastName.value || !event.target.newEmail.value){
     return alert('Must fill in all values');

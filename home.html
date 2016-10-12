@@ -4,14 +4,21 @@
 
 <head>
     <meta charset="utf-8">
+
     <link rel="stylesheet" type="text/css" href="home.css">
     <link rel="stylesheet" href="calendar.css" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="home.css"> -->
+
     <title>Homepage</title>
-    <header> Header </header>
 </head>
 
 <body>
-    <div>
+    <div class="body-wrapper">
         <!-- <p> Roommate section </p>
       <form class="roommateForm"> Add/Remove: <input type="button" name="Add/Remove" value="Add/Remove roommate"/>
      </form> -->
@@ -36,13 +43,12 @@
         <section>
             <ul id="roommatesList"></ul>
         </section>
+
         <!-- <p> Bill section </p> -->
+
         <!-- <form class="billForm"> Add/Remove : <input type="button" name="Add/Remove" value="Add/Remove bills"> -->
         <div class="div-form">
             <form class="bill-form" id="bill-form">
-                <label for="rmOptions">Select Applicable Roommates and bill percentage</label><br>
-                <select multiple name="rmOptions" id="rmOptions"></select><br>
-
                 <label for="billname">Bill Name:</label>
                 <input type="text" name="billname"><br>
                 <label for="amount">Amount:</label>
@@ -53,12 +59,22 @@
                 <input type="text" name="category"><br>
                 <label for="duedate">Due Date:</label>
                 <input type="date" name="duedate"><br>
+                <div id="checkboxes"></div>
                 <input type="submit" name="submit" value="Submit">
             </form>
         </div>
         <section>
+
             <ul id="billList"></ul>
             <table id="billTable"></table>
+
+          <div id="billList">
+            <table id="billTable"></table>
+          </div>
+          <div id="individualBillList">
+            <table id="individualBillTable"></table>
+          </div>
+
         </section>
     </div>
       <div class="addEvent">

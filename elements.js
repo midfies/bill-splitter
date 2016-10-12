@@ -21,10 +21,28 @@ class Navigation {
 var navObj = {
     'Home': 'home.html',
     'Roommate': 'roommate.html',
-    'About Us': 'about_us.html',
-    'Bills': 'bills.html'
+    'About Us': 'about_us.html'
 }
 var nav = new Navigation('navigation', navObj).navElements();
+
+class Checkboxes {
+    constructor(parentEl, obj) {
+        this.parentEl = parentEl;
+        this.obj = obj;
+    }
+
+    create() {
+        let parent = document.getElementById(this.parentEl);
+        for (var i = 0; i < this.obj.length; i++) {
+            let inputChk = document.createElement('input');
+            inputChk.type = 'checkbox';
+            inputChk.name = 'Roommates';
+            inputChk.value = this.obj[i];
+        }
+        parent.appendChild(inputChk);
+    }
+}
+
 
 /**
  * Creates a form
@@ -38,48 +56,36 @@ function Form(elClass, elId, input, parentEl) {
     this.elId = elId;
     this.input = input;
     this.parentEl = parentEl;
-}
 
-Form.prototype.createForm = function() {
-    var parent = document.getElementById(this.parentEl);
-    var form = document.createElement('form');
-    form.className = this.elClass;
-    form.id = this.elId;
-    for (var i = 0; i < this.input.length; i++) {
+    this.createForm = function() {
+        var parent = document.getElementById(this.parentEl);
+        var form = document.createElement('form');
+        form.className = this.elClass;
+        form.id = this.elId;
+        for (var i = 0; i < this.input.length; i++) {
 
-        var label = document.createElement('label');
-        label.for = this.input[i].name;
-        label.innerHTML = this.input[i].name;
+            var label = document.createElement('label');
+            label.for = this.input[i].name;
+            label.innerHTML = this.input[i].name;
 
-        var inputEl = document.createElement('input');
-        inputEl.type = this.input[i].type;
-        inputEl.name = this.input[i].name;
-        form.appendChild(label, inputEl);
-        console.log(inputEl);
+            var inputEl = document.createElement('input');
+            inputEl.type = this.input[i].type;
+            inputEl.name = this.input[i].name;
+            form.appendChild(label, inputEl);
+            console.log(inputEl);
+        }
+        parent.appendChild(inputEl);
     }
-    parent.appendChild(inputEl);
 }
 
-var billForm = [
+/*let billForm = [
     { name: 'name', type: 'text' },
     { name: 'category', type: 'text' },
     { name: 'amount', type: 'text' },
     { name: 'frequency', type: 'text' },
     { name: 'dueDate', type: 'text' },
     { name: 'submit', type: 'submit' }
-]
-
-//var billForm = new Form('Bills', 'Bill-Form', billForm, 'bill-form').createForm();
-
-/**
- * Creates a table
- * @param elClass: class assigned to the Form element
- * @param elId: id assigned to the Form element
- * @param input: array of object with type and name properties
- * @param parentEl: html element to place form in
- */
-
-//roommates, name, amountDue, frequency, category, dueDate)
+]*/
 
 class Table {
     constructor(headData, tableData, parentEl) {
@@ -99,10 +105,27 @@ class Table {
         parent.appendChild(tr);
     }
 
+    buildRow() {
+        let parent = document.getElementById(this.parentEl);
+        for (var i = 0; i < this.tableData.length; i++) {
+            var tr = document.createElement('tr');
+            for (var key in tableData[i]) {
+                if (tableData[i].hasOwnProperty(key)) {
+                    var td = document.createElement('td');
+                    td.innerHTML = tableData[i][key];
+                    tr.appendChild(td);
+                }
+            }
+            parent.appendChild(tr);
+        }
+    }
+
     billRow() {
         let parent = document.getElementById(this.parentEl);
         console.log(this.tableData);
         var tr = document.createElement('tr');
+
+
         var data = Object.keys(this.tableData[i]).forEach(key => {
             var td = document.createElement('td');
             td.innerHTML = this.tableData[key];
@@ -119,21 +142,49 @@ class Table {
             })
             parent.appendChild(tr);
             */
+    }
+
+    subTable() {
+        let parent = document.getElementById(this.parentEl);
+        for (var i = 0; i < this.tableData.length; i++) {
+            var tr = document.createElement('tr');
+            for (var j = 0; j < this.tableData[i].unpaid.length; j++) {
+                var td = document.createElement('td');
+                var unpaidArr = this.tableData[i].unpaid.indexOf(tableData[i].id);
+                td.innerHTML = this.tableData[i].unpaid.indexOf(tableData[i].id);
+            }
+
+            for (var key in tableData[i]) {
+                if (tableData[i].hasOwnProperty(key)) {
+                    var td = document.createElement('td');
+                    td.innerHTML = tableData[i][key];
+                    tr.appendChild(td);
+                }
+            }
+            parent.appendChild(tr);
         }
+    }
 
     populate() {
         this.head();
-        this.billRow();
+        this.buildRow();
     }
 }
 
-Object.keys(this.navObject).forEach(key => {
-    let li = document.createElement('li');
-    parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
-})
+
 
 //var billTable = new Table().populate();
 var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
 var tableData = JSON.parse(localStorage.getItem('Bills'));
 console.log(tableData);
 var billTable = new Table(headData, tableData, 'bill-table').populate();
+
+// Object.keys(this.navObject).forEach(key => {
+//     let li = document.createElement('li');
+//     parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
+// })
+//
+// var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
+// var tableData = JSON.parse(localStorage.getItem('Bills'));
+// console.log(tableData);
+// var billTable = new Table(headData, tableData, 'bill-table').populate();
