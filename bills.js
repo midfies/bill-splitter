@@ -68,7 +68,7 @@ function newBillHandler(event) {
         var customAmntArr = document.forms['bill-form'].elements.customAmnt;
         var chkBoxArr = document.forms['bill-form'].elements.roommates;
 
-        //Filtering for the selected roommates form the checkbox array
+        //Filtering for the selected roommates from the checkbox array
         var checked = [];
         for (var i = 0; i < chkBoxArr.length; i++) {
             if (chkBoxArr[i].checked) {
@@ -81,6 +81,7 @@ function newBillHandler(event) {
             };
         }
 
+        //Creating sub object to store individual bill data in the Bill object
         for (var i = 0; i < checked.length; i++) {
             var individualBill = {
                 name: checked[i].id,
@@ -88,19 +89,22 @@ function newBillHandler(event) {
                 amountOwed: 0,
                 paid: 0
             };
-
+            //Checks for default split or custom input split
             if (checked[i].id && checked[i].customAmnt) {
                 individualBill.percentOwed = (parseFloat(checked[i].customAmnt) / 100).toFixed(2);
             }
             if (checked[i].id && !checked[i].customAmnt) {
-                individualBill.percentOwed = parseFloat(1 / checked.length).toFixed(2);
+                if (i === checked.length - 1) {
+                    individualBill.percentOwed = parseFloat((1 / checked.length) + .01).toFixed(2);
+                } else {
+                    individualBill.percentOwed = parseFloat(1 / checked.length).toFixed(2);
+                }
             }
-
             if (totalPercent <= 1) {
                 totalPercent += parseFloat(individualBill.percentOwed);
             }
             if (totalPercent > 1) {
-                alert('Your total exceeds 100% of the bill!');
+                alert('Your total exceeds 100% of the bill. Please revisit how the bill is divided!');
                 break;
             }
             console.log('Percent owed', individualBill);
@@ -117,7 +121,7 @@ function newBillHandler(event) {
     var dueDate = event.target.duedate.value;
 
     //Creating Bill Object
-    if (roommates && name && amountDue && frequency && category && dueDate) {
+    if (roommates && name && amountDue && frequency && category && dueDate && totalPercent === 1) {
         var newBill = new Bill(roommates, name, amountDue, frequency, category, dueDate, bills.length);
         newBill.splitBill();
 
@@ -126,10 +130,12 @@ function newBillHandler(event) {
         localStorage.setItem('roommates', JSON.stringify(roommate));
 
         billForm.reset();
+        var resetcheckboxes = document.getElementById('checkboxes').innerHTML = '';
+        createChkBox('checkboxes', roommate);
     } else {
         console.log(totalPercent);
         if (totalPercent !== 1.00) {
-            alert('Please look at how you divided the bill!');
+            alert('How the bill is divided doesnt sum to 100 percent of the amount due!');
         } else {
             alert('Please fill out all fields for the bill!');
         }
