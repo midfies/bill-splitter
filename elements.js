@@ -172,13 +172,6 @@ class Table {
 }
 
 
-
-//var billTable = new Table().populate();
-var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
-var tableData = JSON.parse(localStorage.getItem('Bills'));
-console.log(tableData);
-var billTable = new Table(headData, tableData, 'bill-table').populate();
-
 // Object.keys(this.navObject).forEach(key => {
 //     let li = document.createElement('li');
 //     parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
