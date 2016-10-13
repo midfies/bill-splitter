@@ -1,10 +1,16 @@
 body {
+    width: 700px;
     height: 100%;
-    background-color: #646464;
+    background-color: #05668D;
     font-size: 11px;
     color: #fff;
     font-family: 'Exo', sans-serif;
     margin: 0 auto;
+    text-align: left;
+}
+
+body li {
+    list-style: none;
 }
 
 .nav-relative {
@@ -14,11 +20,11 @@ body {
 .nav {
     display: block;
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 5px;
+    right: 370px;
     border-radius: 5px;
-    border: 3px solid black;
-    background: grey;
+    border: 3px solid white;
+    background: #05668D;
     padding: 5px;
     width: 90px;
 }
@@ -29,4 +35,52 @@ body {
     color: white;
     margin: 0 0.5em;
     list-style: none;
+}
+
+.form {
+    display: inline-block;
+}
+
+.addRoomateForm input[type=text] {
+    width: 50px;
+    padding: 10px;
+}
+
+fieldset {
+    max-width: 500px;
+}
+
+section {
+    display: inline-block;
+}
+
+footer {
+    padding: 20px;
+    float: left;
+    clear: both;
+}
+
+input {
+    margin: 2px;
+    border-radius: 5px;
+}
+
+table {
+    padding-top: 20px;
+    display: inline-table;
+    border-spacing: 1px;
+}
+
+th {
+    font-size: 11px;
+    border: 3px solid white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+td {
+    font-size: 9px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
 }
