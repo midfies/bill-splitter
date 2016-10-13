@@ -1,13 +1,15 @@
 'use strict';
 
 var roommates = [];
-
-if (localStorage.getItem('roommates')){
-  console.log('Fetching LS...');
-  roommates = JSON.parse(localStorage.getItem('roommates'));
-} else {
-  //there are no roommates in the list
-}
+var loggedIn = localStorage.getItem('loggedInID');
+var house = JSON.parse(localStorage.getItem(loggedIn));
+roommates = house.roommates;
+// if (localStorage.getItem('roommates')){
+//   console.log('Fetching LS...');
+//   roommates = JSON.parse(localStorage.getItem('roommates'));
+// } else {
+//   //there are no roommates in the list
+// }
 
 function Roommate(firstName, lastName, email){
   this.firstName = firstName;
@@ -47,8 +49,9 @@ function display(){
         if (toRemove === roommates[i].userID){
           if (confirm('Are you sure you want to remove ' + roommates[i].firstName + ' from the roommates list?')){
             roommates.splice(i, 1);
-            var arrayToStore = JSON.stringify(roommates);
-            localStorage.setItem('roommates',arrayToStore);
+            house.roommates = roommates;
+            var toLocalStorage = JSON.stringify(house);
+            localStorage.setItem('roommates',toLocalStorage);
             display();
           } else {
             //do nothing
@@ -60,9 +63,9 @@ function display(){
 }
 
 addRoomateForm.addEventListener('submit', function(event){
-  if (localStorage.getItem('roommates')){
-    roommates = JSON.parse(localStorage.getItem('roommates'));
-  }
+  // if (localStorage.getItem('roommates')){
+  //   roommates = JSON.parse(localStorage.getItem('roommates'));
+  // }
   event.preventDefault();
   if (!event.target.newFirstName.value || !event.target.newLastName.value || !event.target.newEmail.value){
     return alert('Must fill in all values');
@@ -83,8 +86,11 @@ addRoomateForm.addEventListener('submit', function(event){
   event.target.newEmail.value = null;
   var newRoommate = new Roommate(newRoommateFirstName, newRoommateLastName, newRoommateEmail);
   console.log(newRoommate);
-  var arrayToStore = JSON.stringify(roommates);
-  localStorage.setItem('roommates',arrayToStore);
+  house.roommates = roommates;
+  var toLocalStorage = JSON.stringify(house);
+  localStorage.setItem(loggedIn,toLocalStorage);
+  // var arrayToStore = JSON.stringify(roommates);
+  // localStorage.setItem('roommates',arrayToStore);
   display();
 });
 

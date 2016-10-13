@@ -5,7 +5,6 @@ var theSignUpForm = document.getElementById('signUpForm');
 var theLoginForm = document.getElementById('logInForm');
 //******************************************************************************
 // var formValues;
-
 var houseArray = localStorage.getItem('allTheHouses');
 if (!houseArray) {
   houseArray = [];
@@ -18,7 +17,12 @@ if (!houseArray) {
 theSignUpForm.addEventListener('submit',storeSignUpData);
 theLoginForm.addEventListener('submit', signIn);
 //******************************************************************************
-
+function House(userName, password){
+  this.userName = userName,
+  this.password = password,
+  this.roommates = [];
+  this.bills = [];
+}
 //***********************SignUp function****************************************
 function storeSignUpData(event) {   //also called a callback.
   event.preventDefault();
@@ -79,6 +83,9 @@ function storeSignUpData(event) {   //also called a callback.
   var samePasswordDesicion = isPasswordandVerifytheSame(thePasswordIs, verifyPassword);
 
   if (emptyArrayDecision === true && duplicateDecision === false && samePasswordDesicion === true ) {
+    var houseObject = new House(formValues.user_id, formValues.password);
+    var houseToStore = JSON.stringify(houseObject);
+    localStorage.setItem(formValues.user_id, houseToStore);
     savetoLocalStorage(formValues);
 
   }
@@ -107,12 +114,10 @@ function signIn (event) {
 
   function iDandPWmatch ( myNameIs,houseArray) {
     for (var i = 0; i < houseArray.length; i++) {
+      console.log(myNameIs + ' myNameIs');
+      console.log(houseArray[i].user_id + ' houseArray[i].user_id');
       if (myNameIs === houseArray[i].user_id) {
         return true;
-      }
-      else {
-        alert('User ID has already been used or not found. Please try again.');
-        return false;
       }
     } //end of loop
   }//endofFunction
@@ -122,13 +127,16 @@ function signIn (event) {
     alert('Please enter a password');
     return false;
   }
-  if (myNameIs === '')
+  if (myNameIs === ''){
     alert('Please enter a User ID');
-  return false;
+    return false;
+  }
 
   var letsLogIn = iDandPWmatch( myNameIs,houseArray);
+  console.log(letsLogIn);
   if(letsLogIn === true ) {
     // console.log('I want to go to the website');
+    localStorage.setItem('loggedInID', myNameIs);
     window.location.href = 'home.html';
   }
 
