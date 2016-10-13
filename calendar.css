@@ -3,6 +3,7 @@ body{
     height: 100vh;
     margin: auto;
     text-align: center;
+    font-family: 'Exo', sans-serif;
 }
 a{
     color:#d89f52;
@@ -28,7 +29,7 @@ hr{
     transition: box-shadow .25s;
     border-radius: 2px;
     padding: 9px 7px 9px 7px;
-    background: #FFFCF9;
+    background: #05668d;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 
 }
@@ -38,12 +39,13 @@ hr{
         width: 33px;
         border: #FFF9F2 1px solid;
         text-align: center;
-        background: antiquewhite;
+        background: #46494C;
         cursor: pointer;
+        color: #DCDCDD;
     }
         #calendarThis li:hover{
             border: #F9E0B6 1px solid;
-            background: #fff;
+            background: #4C5C68;
         }
 .float-left, .day-view{
     float: left;
@@ -65,18 +67,24 @@ hr{
         padding: 13px 0;
         border: antiquewhite 2px solid;
         background: #fff;
+        color: black;
     }
     .day-number{
-        display:block;
+        display:inline-block;
         margin: 10% auto;
-        font-size: 144px;
+        font-size: 90px;
         background: #fff;
         width: 83%;
         border-radius: 2px;
-        border: #FFE2BB 1px dotted;
         position: relative;
         top: 64%;
         transform: translateY(12%);
+        overflow: scroll;
+        max-width: 80%;
+        min-height: 60%;
+        height: 200px;
+        word-wrap: break-word;
+        color:#05668D;
     }
 
 .day-view, .month-view{
@@ -84,10 +92,11 @@ hr{
     display: block;
 }
 .day-of-week{
-    background: #FFFCF9 !important;
+    background: lightgrey !important;
     font-weight: bold;
     border: #fff 1px solid;
-    color: #D89F52;
+    color: black;
+    border-radius: 5px;
 }
 
 .month-header{
@@ -99,9 +108,10 @@ hr{
     background: #fff;
     margin: 0 0 2px 0;
     font-weight: bold;
+    color: black;
 }
 .today{
-    background: #FFFDFA !important;
+    background: #4C5C68 !important;
 }
 .arrow{
     width: 45px;
@@ -117,4 +127,40 @@ hr{
     #calendarThis{
         width: 358px;
     }
+}
+
+li {
+  min-width: 2.1em;
+  min-height: 2.1em;
+  max-height: 2.1em;
+  overflow: scroll;
+  border-radius: 5px;
+}
+
+bill {
+  text-decoration: none;
+}
+
+.nav-relative {
+    position: relative;
+}
+
+.nav {
+    display: block;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    border-radius: 5px;
+    border: 3px solid black;
+    background: grey;
+    padding: 5px;
+    width: 90px;
+}
+
+.nav a {
+    font-size: 0.9em;
+    display: block;
+    color: white;
+    margin: 0 0.5em;
+    list-style: none;
 }
