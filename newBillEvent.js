@@ -2,16 +2,11 @@
 
 var roommate = [];
 var bills = [];
+
 var loggedIn = localStorage.getItem('loggedInID');
 var house = JSON.parse(localStorage.getItem(loggedIn));
 roommate = house.roommates;
 bills = house.bills;
-// if (localStorage.getItem('roommates')) {
-//     roommate = JSON.parse(localStorage.getItem('roommates'));
-// }
-// if (localStorage.getItem('Bills')) {
-//     bills = JSON.parse(localStorage.getItem('Bills'));
-// }
 
 var customBill = document.getElementById('customAmnt');
 customBill.addEventListener('change', customBillHandler);
@@ -59,7 +54,6 @@ function newBillHandler(event) {
         } else {
             alert('You dont have any roommates added');
         }
-
         //Creating sub object to store individual bill data in the Bill object
         for (var i = 0; i < checked.length; i++) {
             var individualBill = {
@@ -75,7 +69,7 @@ function newBillHandler(event) {
             if (checked[i].id && !checked[i].customAmnt) {
                 if (checked.length === 1) {
                     individualBill.percentOwed = parseFloat(1 / checked.length).toFixed(2);
-                } else if (i === checked.length - 1 && checked.length % 2 !== 0) {
+                } else if (i === checked.length - 1 && 100 % checked.length !== 0) {
                     individualBill.percentOwed = parseFloat((1 / checked.length) + .01).toFixed(2);
                 } else {
                     individualBill.percentOwed = parseFloat(1 / checked.length).toFixed(2);
@@ -110,7 +104,7 @@ function newBillHandler(event) {
         house.bills = bills;
         console.log('house.roommates ', house.roommates);
         console.log('roommates', roommates);
-      //  house.roommates = roommates;
+        //  house.roommates = roommates;
         var toLocalStorage = JSON.stringify(house);
         localStorage.setItem(loggedIn, toLocalStorage);
         // localStorage.setItem('Bills', JSON.stringify(bills));
