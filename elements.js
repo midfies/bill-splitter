@@ -20,10 +20,47 @@ class Navigation {
 
 var navObj = {
     'Home': 'home.html',
-    'Roommate': 'roommate.html',
     'About Us': 'about_us.html'
 }
 var nav = new Navigation('navigation', navObj).navElements();
+
+var roommate = [];
+var bills = [];
+
+if (localStorage.getItem('roommates')) {
+    roommate = JSON.parse(localStorage.getItem('roommates'));
+}
+if (localStorage.getItem('Bills')) {
+    bills = JSON.parse(localStorage.getItem('Bills'));
+}
+
+//create checbox and text input for each roommate
+function createChkBox(parentEl, obj) {
+    var parent = document.getElementById(parentEl);
+    var div = document.createElement('div');
+    div.id = "customAmnt";
+    for (var i = 0; i < obj.length; i++) {
+        var label = document.createElement('label');
+        var inputChkBox = document.createElement('input');
+        var text = document.createElement('input');
+        inputChkBox.type = 'checkbox';
+        inputChkBox.name = 'roommates';
+        inputChkBox.value = (obj[i].firstName + ' ' + obj[i].lastName);
+        inputChkBox.checked = 'on';
+        inputChkBox.id = 'check' + i;
+        text.type = 'text';
+        text.name = 'customAmnt';
+        text.id = 'check' + i + 'txt';
+        label.for = obj[i].firstName + ' ' + obj[i].lastName;
+        label.innerHTML = obj[i].firstName + ' ' + obj[i].lastName;
+        div.appendChild(label);
+        div.appendChild(inputChkBox);
+        div.appendChild(text);
+    }
+    parent.appendChild(div);
+}
+createChkBox('checkboxes', roommate);
+
 
 class Checkboxes {
     constructor(parentEl, obj) {
@@ -42,8 +79,6 @@ class Checkboxes {
         parent.appendChild(inputChk);
     }
 }
-
-
 /**
  * Creates a form
  * @param elClass: class assigned to the Form element
@@ -77,7 +112,6 @@ function Form(elClass, elId, input, parentEl) {
         parent.appendChild(inputEl);
     }
 }
-
 /*let billForm = [
     { name: 'name', type: 'text' },
     { name: 'category', type: 'text' },
@@ -86,7 +120,6 @@ function Form(elClass, elId, input, parentEl) {
     { name: 'dueDate', type: 'text' },
     { name: 'submit', type: 'submit' }
 ]*/
-
 class Table {
     constructor(headData, tableData, parentEl) {
         this.tableData = tableData;
@@ -170,14 +203,3 @@ class Table {
         this.buildRow();
     }
 }
-
-
-// Object.keys(this.navObject).forEach(key => {
-//     let li = document.createElement('li');
-//     parent.innerHTML += '<a href=' + this.navObject[key] + '>' + key + '</a>';
-// })
-//
-// var headData = ['Category', 'Bill Name', 'Frequency', 'Amount Due', 'Due Date'];
-// var tableData = JSON.parse(localStorage.getItem('Bills'));
-// console.log(tableData);
-// var billTable = new Table(headData, tableData, 'bill-table').populate();
