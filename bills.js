@@ -17,7 +17,7 @@ bills = house.bills;
 //create checbox and text input for each roommate
 
 function makeHeaderRow() {
-    var headings = ['Bill Name', 'Category', 'Due Date', 'Amount Due', 'Total Bill'];
+    var headings = ['Bill Name', 'Category', 'Due Date', 'Amount Due'];
     var table = document.getElementById('billTable');
     var rowElement = document.createElement('tr');
     for (var i = 0; i < headings.length; i++) {
@@ -49,9 +49,7 @@ function fillBillTable() {
         dataElement = makeTD(bills[i].id);
         dataElement.textContent = bills[i].dueDate;
         rowElement.appendChild(dataElement);
-        dataElement = makeTD(bills[i].id);
-        dataElement.textContent = bills[i].amountPaid;
-        rowElement.appendChild(dataElement);
+
         dataElement = makeTD(bills[i].id);
         dataElement.textContent = bills[i].amountDue;
         rowElement.appendChild(dataElement);
@@ -83,12 +81,13 @@ function fillBillTable() {
     var total = 0;
     rowElement = document.createElement('tr');
     dataElement = document.createElement('td');
+    dataElement.setAttribute('class','totalRowSpacing');
     rowElement.appendChild(dataElement);
     dataElement = document.createElement('td');
+    dataElement.setAttribute('class','totalRowSpacing');
     rowElement.appendChild(dataElement);
     dataElement = document.createElement('td');
-    rowElement.appendChild(dataElement);
-    dataElement = document.createElement('td');
+    dataElement.setAttribute('class','totalRowSpacing');
     rowElement.appendChild(dataElement);
     for (var i = 0; i < bills.length; i++){
       total += bills[i].amountDue;

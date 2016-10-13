@@ -20,7 +20,8 @@ class Navigation {
 
 var navObj = {
     'Home': 'home.html',
-    'About Us': 'about_us.html'
+    'About Us': 'about_us.html',
+    'Log Out': 'index.html'
 }
 var nav = new Navigation('navigation', navObj).navElements();
 
