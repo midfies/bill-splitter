@@ -16,7 +16,7 @@ if (!houseArray) {
 //*****************add how it hears the click to run function*******************
 
 theSignUpForm.addEventListener('submit',storeSignUpData);
-// theLoginForm.addEventListener('submit', signIn);
+theLoginForm.addEventListener('submit', signIn);
 //******************************************************************************
 
 //***********************SignUp function****************************************
@@ -68,7 +68,7 @@ function storeSignUpData(event) {   //also called a callback.
 
   function isPasswordandVerifytheSame (thePasswordIs, verifyPassword) {
     if (verifyPassword === thePasswordIs) {
-      alert('Thank you for signing up. You may now log in.')
+      alert('Thank you for signing up. You may now log in.');
       return true;
     }
     if (thePasswordIs !== verifyPassword){
@@ -95,35 +95,43 @@ function storeSignUpData(event) {   //also called a callback.
 // when I press the Log in button, I want the computer to see if the key:value is
 // present in localStorage and then parse it out. If it's there, go to the next
 // page. If there is not a match, alert, "this user name /pw combo does not match."
-// function signIn (event) {
-//   event.preventDefault();
-//   var myNameIs = event.target.elements.login_id.value;
-//   var myPassword = event.target.elements.mypassword.value;
-//   var logInValues = {
-//     login_id:   myNameIs,
-//     mypassword: myPassword
-//   };
-//
-//
-//   function iDandPWmatch (login_id, houseArray) {
-//     console.log ('yep');
-//     for (var i = 0; i < houseArray.length; i++) {
-//     if (myNameIs === houseArray[i].user_id)
-//       console.log ('i am true');
-//     }   //end of loop
+function signIn (event) {
+  event.preventDefault();
+  console.log(houseArray);
+  var myNameIs = event.target.elements.login_id.value;
+  var myPassword = event.target.elements.mypassword.value;
+  var logInValues = {
+    login_id:   myNameIs,
+    mypassword: myPassword
+  };
 
-    //
-    // else {
-    //   alert('User ID/Password not found');
-    //   console.log('i am false');
-    // }
-    //
-    // var letsLogIn = iDandPWmatch(logInValues, formValues);
-    // if(letsLogIn === true ) {
-    //   console.log('I want to go to the website');
-    //   window.location.href = 'https://www.google.com';
-    // }
-  // } //end of idandPWmatch
+  function iDandPWmatch ( myNameIs,houseArray) {
+    for (var i = 0; i < houseArray.length; i++) {
+      if (myNameIs === houseArray[i].user_id) {
+        return true;
+      }
+      else {
+        alert('User ID has already been used or not found. Please try again.');
+        return false;
+      }
+    } //end of loop
+  }//endofFunction
+
+  iDandPWmatch( myNameIs,houseArray);
+  if (myPassword === '') {
+    alert('Please enter a password');
+    return false;
+  }
+  if (myNameIs === '')
+    alert('Please enter a User ID');
+  return false;
+
+  var letsLogIn = iDandPWmatch( myNameIs,houseArray);
+  if(letsLogIn === true ) {
+    // console.log('I want to go to the website');
+    window.location.href = 'home.html';
+  }
+
 
   // var getFromStorage = localStorage.getItem('signUpValues');
 //   // var formValues = JSON.parse(getFromStorage);
@@ -136,12 +144,7 @@ function storeSignUpData(event) {   //also called a callback.
 //       console.log('user info not found');
 //       break;
 //     }
-//     if (myPassword === '') {
-//       alert('Please enter a password');
-//     }
-//     if (myNameIs === '')
-//       alert('Please enter a User ID');
-//   }
+  }
 // }
-
-// //******************************************************************************
+// } //end of SignIn
+// //***************************************************************************
