@@ -1,0 +1,15 @@
+* {
+  margin: 0px;
+  padding: 0px
+}
+
+#wrapper {
+  outline: 1px solid red;
+  width:960px;
+  margin:0 auto;
+  text-align:left;
+}
+
+footer{
+  outline: 1px dotted black;
+}
