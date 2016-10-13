@@ -1,14 +1,20 @@
 'use strict';
 
+//var houseUser = [];
 var roommate = [];
 var bills = [];
+var loggedIn = localStorage.getItem('loggedInID');
+var house = JSON.parse(localStorage.getItem(loggedIn));
+roommate = house.roommates;
+bills = house.bills;
+// if (localStorage.getItem('roommates')) {
+//     roommate = JSON.parse(localStorage.getItem('roommates'));
+// }
+// if (localStorage.getItem('Bills')) {
+//     bills = JSON.parse(localStorage.getItem('Bills'));
+// }
 
-if (localStorage.getItem('roommates')) {
-    roommate = JSON.parse(localStorage.getItem('roommates'));
-}
-if (localStorage.getItem('Bills')) {
-    bills = JSON.parse(localStorage.getItem('Bills'));
-}
+//create checbox and text input for each roommate
 
 function makeHeaderRow() {
     var headings = ['Bill Name', 'Category', 'Due Date', 'Amount Due', 'Total Bill'];
@@ -49,8 +55,49 @@ function fillBillTable() {
         dataElement = makeTD(bills[i].id);
         dataElement.textContent = bills[i].amountDue;
         rowElement.appendChild(dataElement);
+        var buttonElement = document.createElement('button');
+        buttonElement.setAttribute('id', bills[i].id);
+        buttonElement.setAttribute('class', 'removeBill');
+        buttonElement.textContent = 'Pay Off';
+        rowElement.appendChild(buttonElement);
         table.appendChild(rowElement);
     }
+    table.addEventListener('click', function(event) {
+     console.log(event);
+     if(event.target.nodeName === 'BUTTON'){
+       var toRemove = parseInt(event.target.id);
+       for (var i = 0; i < bills.length; i++){
+         if (toRemove === bills[i].id){
+           if (confirm('Are you sure you want to pay and remove ' + bills[i].name + ' from the list?')){
+             bills.splice(i, 1);
+             house.bills = bills;
+             var toLocalStorage = JSON.stringify(house);
+             localStorage.setItem(loggedIn,toLocalStorage);
+             location.reload();
+           }
+         }
+       }
+
+     }
+    });
+    var total = 0;
+    rowElement = document.createElement('tr');
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    for (var i = 0; i < bills.length; i++){
+      total += bills[i].amountDue;
+    }
+    dataElement = document.createElement('td');
+    dataElement.textContent = total;
+    rowElement.appendChild(dataElement);
+    console.log('Total: ', total);
+    table.appendChild(rowElement);
 }
 
 function makeTD(id) {

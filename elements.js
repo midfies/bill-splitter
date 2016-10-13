@@ -26,13 +26,16 @@ var nav = new Navigation('navigation', navObj).navElements();
 
 var roommate = [];
 var bills = [];
-
-if (localStorage.getItem('roommates')) {
-    roommate = JSON.parse(localStorage.getItem('roommates'));
-}
-if (localStorage.getItem('Bills')) {
-    bills = JSON.parse(localStorage.getItem('Bills'));
-}
+var loggedIn = localStorage.getItem('loggedInID');
+var house = JSON.parse(localStorage.getItem(loggedIn));
+roommate = house.roommates;
+bills = house.bills;
+// if (localStorage.getItem('roommates')) {
+//     roommate = JSON.parse(localStorage.getItem('roommates'));
+// }
+// if (localStorage.getItem('Bills')) {
+//     bills = JSON.parse(localStorage.getItem('Bills'));
+// }
 
 //create checbox and text input for each roommate
 function createChkBox(parentEl, obj) {
@@ -45,12 +48,14 @@ function createChkBox(parentEl, obj) {
         var text = document.createElement('input');
         inputChkBox.type = 'checkbox';
         inputChkBox.name = 'roommates';
+
         inputChkBox.value = (obj[i].firstName + ' ' + obj[i].lastName);
         inputChkBox.checked = 'on';
         inputChkBox.id = 'check' + i;
         text.type = 'text';
         text.name = 'customAmnt';
         text.id = 'check' + i + 'txt';
+        text.setAttribute('class', 'percentageBox');
         label.for = obj[i].firstName + ' ' + obj[i].lastName;
         label.innerHTML = obj[i].firstName + ' ' + obj[i].lastName;
         div.appendChild(label);
