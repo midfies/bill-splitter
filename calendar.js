@@ -15,6 +15,10 @@
       this.theYear = theDate.getFullYear();
       this.daysInMonth = new Date(theDate.getFullYear(), theDate.getMonth() + 1, 0).getDate();
       this.firstDayOfMonth = dayNames[new Date(theDate.getFullYear(), theDate.getMonth(), 1).getDay()];
+      console.log('getDate', this.theDate);
+      console.log('monthNames', this.getMonth);
+      console.log('dayNames', this.getDay);
+      console.log('getMonth', this.getMonth);
     };
 
     var currentDate = new DateObject(theDate);
