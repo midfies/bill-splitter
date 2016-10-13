@@ -12,10 +12,13 @@ h1 {
     font-family: sans-serif;
     margin-bottom: .5em;
     background-image: url(http://wallpapercave.com/wp/s7R41PL.jpg);
+    color: black;
 }
 
 body {
     padding: 2em;
+    background-color: #05668D;
+    color: #fff;
 }
 
 img {
