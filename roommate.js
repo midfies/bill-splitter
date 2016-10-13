@@ -86,6 +86,7 @@ addRoomateForm.addEventListener('submit', function(event){
   var arrayToStore = JSON.stringify(roommates);
   localStorage.setItem('roommates',arrayToStore);
   display();
+	location.reload();
 });
 
 display();
