@@ -5,6 +5,7 @@ var theSignUpForm = document.getElementById('signUpForm');
 var theLoginForm = document.getElementById('logInForm');
 //******************************************************************************
 // var formValues;
+localStorage.setItem('loggedInID', '');
 var houseArray = localStorage.getItem('allTheHouses');
 if (!houseArray) {
   houseArray = [];
@@ -119,7 +120,9 @@ function signIn (event) {
       if (myNameIs === houseArray[i].user_id) {
         return true;
       }
-    } //end of loop
+    }
+    alert('User not found');
+    //end of loop
   }//endofFunction
 
   iDandPWmatch( myNameIs,houseArray);
