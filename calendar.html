@@ -8,8 +8,20 @@
 <body>
     <h1>JavaScript Calendar</h1>
     <div id="calendarThis"> </div>
-    <form> <label for="AddEvent">Add event</label>
+    <!-- <form> <label for="AddEvent">Add event</label>
       <input type="button" name="event" value="add event">
+    </form> -->
+    <form action="add_btn">
+      <fieldset>
+        <legend>Add event:</legend>
+        Event name:
+        <input type="text" name="eventname" value="">
+        Event date:
+        <input type="text" name="eventdate" value="">
+        Event description:
+        <input type="text" name="eventdescription" value="">
+        <input type="submit" name ="submit" value="Submit">
+      </fieldset>
     </form>
     <script src="calendar.js"></script>
 </body>

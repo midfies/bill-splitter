@@ -4,7 +4,7 @@
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 3.5em;
     background-color: darkgray;
     text-align: center;
     border-radius: 1em;
@@ -23,25 +23,40 @@ img {
 }
 
 #one {
-    float: right;
+    /*float: right;*/
     box-shadow: 5px 5px 3px #888888;
+    max-width: 15em;
+    max-height: 15em;
 }
 
 #two {
-    float: left;
+    /*float: left;*/
     box-shadow: 5px 5px 3px #888888;
     margin: .3em;
+    max-width: 15em;
+    max-height: 15em;
 }
 
 #three {
-    float: right;
+    /*float: right;*/
     box-shadow: 5px 5px 3px #888888;
+    max-width: 15em;
+    max-height: 15em;
 }
 
 #four {
-    float: left;
+    /*float: left;*/
     box-shadow: 5px 5px 3px #888888;
     margin: .3em;
+    max-width: 15em;
+    max-height: 15em;
+}
+
+#five {
+  max-width: 5em;
+  max-height: 5em;
+  display: inline-block;
+  position: relative;
 }
 
 img:hover {
@@ -49,9 +64,9 @@ img:hover {
 }
 
 p {
-    padding: 3em;
+    padding: 1em;
     font-size: 1em;
-    max-width: 80%;
+    max-width: 75%;
     border: 1px solid black;
     border-radius: 2em;
     margin: 1em;
