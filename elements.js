@@ -48,12 +48,14 @@ function createChkBox(parentEl, obj) {
         var text = document.createElement('input');
         inputChkBox.type = 'checkbox';
         inputChkBox.name = 'roommates';
+
         inputChkBox.value = (obj[i].firstName + ' ' + obj[i].lastName);
         inputChkBox.checked = 'on';
         inputChkBox.id = 'check' + i;
         text.type = 'text';
         text.name = 'customAmnt';
         text.id = 'check' + i + 'txt';
+        text.setAttribute('class', 'percentageBox');
         label.for = obj[i].firstName + ' ' + obj[i].lastName;
         label.innerHTML = obj[i].firstName + ' ' + obj[i].lastName;
         div.appendChild(label);

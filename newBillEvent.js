@@ -97,13 +97,13 @@ function newBillHandler(event) {
     //retrieve form values
     var name = event.target.billname.value;
     var amountDue = parseFloat(event.target.amount.value);
-    var frequency = parseInt(event.target.frequency.value);
+    // var frequency = parseInt(event.target.frequency.value);
     var category = event.target.category.value;
     var dueDate = event.target.duedate.value;
 
     //Creating Bill Object
-    if (roommates && name && amountDue && frequency && category && dueDate && totalPercent === 1) {
-        var newBill = new Bill(roommates, name, amountDue, frequency, category, dueDate, bills.length);
+    if (roommates && name && amountDue && category && dueDate && totalPercent === 1) {
+        var newBill = new Bill(roommates, name, amountDue, category, dueDate, bills.length);
         newBill.splitBill();
 
         //Saving to local storage
@@ -130,11 +130,10 @@ function newBillHandler(event) {
     location.reload();
 }
 
-function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
+function Bill(roommates, name, amountDue, category, dueDate, id) {
     this.roommates = roommates;
     this.name = name;
     this.amountDue = amountDue;
-    this.frequency = frequency;
     this.category = category;
     this.paid = 0; //handle later
     this.dueDate = dueDate;

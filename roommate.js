@@ -50,7 +50,7 @@ function display(){
             roommates.splice(i, 1);
             house.roommates = roommates;
             var toLocalStorage = JSON.stringify(house);
-            localStorage.setItem('roommates',toLocalStorage);
+            localStorage.setItem(loggedIn,toLocalStorage);
             display();
           } else {
             //do nothing

@@ -55,8 +55,49 @@ function fillBillTable() {
         dataElement = makeTD(bills[i].id);
         dataElement.textContent = bills[i].amountDue;
         rowElement.appendChild(dataElement);
+        var buttonElement = document.createElement('button');
+        buttonElement.setAttribute('id', bills[i].id);
+        buttonElement.setAttribute('class', 'removeBill');
+        buttonElement.textContent = 'Pay Off';
+        rowElement.appendChild(buttonElement);
         table.appendChild(rowElement);
     }
+    table.addEventListener('click', function(event) {
+     console.log(event);
+     if(event.target.nodeName === 'BUTTON'){
+       var toRemove = parseInt(event.target.id);
+       for (var i = 0; i < bills.length; i++){
+         if (toRemove === bills[i].id){
+           if (confirm('Are you sure you want to pay and remove ' + bills[i].name + ' from the list?')){
+             bills.splice(i, 1);
+             house.bills = bills;
+             var toLocalStorage = JSON.stringify(house);
+             localStorage.setItem(loggedIn,toLocalStorage);
+             location.reload();
+           }
+         }
+       }
+
+     }
+    });
+    var total = 0;
+    rowElement = document.createElement('tr');
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    dataElement = document.createElement('td');
+    rowElement.appendChild(dataElement);
+    for (var i = 0; i < bills.length; i++){
+      total += bills[i].amountDue;
+    }
+    dataElement = document.createElement('td');
+    dataElement.textContent = total;
+    rowElement.appendChild(dataElement);
+    console.log('Total: ', total);
+    table.appendChild(rowElement);
 }
 
 function makeTD(id) {

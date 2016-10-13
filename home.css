@@ -144,6 +144,9 @@ footer {
 table td, table th{
   outline: 1px solid red;
 }
+.percentageBox{
+  width: 20px;
+}
 
 @media (min-width:320px) {
     /* smartphones, iPhone, portrait 480x320 phones */
