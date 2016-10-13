@@ -93,6 +93,7 @@ function fillBillTable() {
       total += bills[i].amountDue;
     }
     dataElement = document.createElement('td');
+    dataElement.setAttribute('id', 'totalBox');
     dataElement.textContent = total;
     rowElement.appendChild(dataElement);
     console.log('Total: ', total);
@@ -133,7 +134,7 @@ function handleIndividualBillDisplay(event) {
             }
 
             function buildIndividualBillHeader(billToDisplay) {
-                var headings = ['Bill: ' + bills[billToDisplay].name + ' | ', 'Category: ' + bills[billToDisplay].category + ' | ', 'Amount Due | '];
+                var headings = ['Bill: ' + bills[billToDisplay].name, 'Category: ' + bills[billToDisplay].category, 'Amount Due'];
                 var rowElement = document.createElement('tr');
                 for (var i = 0; i < headings.length; i++) {
                     var headElement = document.createElement('th');

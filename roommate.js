@@ -25,6 +25,21 @@ roommateDiv.addEventListener('click',handleRoommateBillList);
 function handleRoommateBillList(event){
   console.log(event);
 }
+var roommateFieldset = document.getElementById('roommateFieldset');
+roommateFieldset.addEventListener('click', handleFieldset);
+function handleFieldset(event){
+  var toHide = document.getElementById('toHide');
+  console.log(event);
+  if (event.target.nodeName === 'LEGEND'){
+    console.log('here');
+    if(toHide.style.display === 'none'){
+      toHide.style.display = '';
+    }
+    else{
+      toHide.style.display = 'none';
+    }
+  }
+}
 
 function display(){
   roommatesList.innerHTML = '';

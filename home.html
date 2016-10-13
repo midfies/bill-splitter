@@ -21,11 +21,12 @@
         </header>
         <h1> Bill Tracker
             <h1>
-                <h2> Manage roommates </h2>
+                <h2>Roommates </h2>
                 <div class="forms">
                     <form id="addRoomateForm">
-                        <fieldset>
-                            <legend>Add Roommate</legend>
+                        <fieldset id="roommateFieldset">
+                          <legend>Add Roommate</legend>
+                          <div id="toHide">
                             <label for="newFirstName">First Name:</label>
                             <input name="newFirstName" type="text" /><br/>
                             <label for="newLastName">Last Name:</label>
@@ -33,12 +34,13 @@
                             <label for="newEmail">Email:</label>
                             <input name="newEmail" type="email" /><br/>
                             <button type="submit">Add</button>
+                          </div>
                         </fieldset>
                     </form>
                     <section>
-                        <div id="roommateDiv">
-                            <ul id="roommatesList"></ul>
-                        </div>
+                      <div id="roommateDiv">
+                        <ul id="roommatesList"></ul>
+                      </div>
                     </section>
                     <div class="div-form">
                         <form class="bill-form" id="bill-form">
@@ -61,7 +63,7 @@
                                   evenly amongst the participating roommates. If you would like change the percentage each roommate pays
                                 then place the number of percent they will pay in their respective box.  All boxes must equal 100.</p>
                                 <div class="checkboxes" id="checkboxes"></div>
-                                <input type="submit" name="submit" value="Submit">
+                                <button type="submit" name="submit" value="Submit">Submit</button>
                             </fieldset>
                         </form>
                     </div>

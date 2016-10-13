@@ -3,49 +3,52 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="indexstyle.css">
     <title>Bill Splitter</title>
   </head>
 
   <div id="wrapper">
 
-  <header>
-    <!--<img src="http://placehold.it/350x150">-->
-
-  </header>
   <body>
-    <h1>Welcome</h1>
-    <h2>The most convienant and easiet way to split household bills!</h2>
+    <header>
+      <img src="img/logo.png">
 
-    <div id="right">
-      <form id="signUpForm" >
+    </header>
+    <h1>Welcome to Bill-Splitter</h1>
+    <h2>The most convienant and easiest way to split household bills!</h2>
+    <div id="signUpLogIn">
+      <div id="right">
+        <form id="signUpForm" >
           <fieldset>
-          <legend> Sign Up Here  </legend>
+            <legend> Sign Up Here  </legend>
             Create User ID:<input type="text" name="user_id" />
             <br>
             Create Password:<input type="password" name="password" />
             <br>
             Verify Password:<input type="password" name="verify">
-            <button type="submit" name="button"> Sign Up </button>
-        </form>
-          </fieldset>
-    </div>
+            <br /><button id="signin" type="submit" name="button" height="50px" width=100px;> Sign Up </button>
+          </form>
+        </fieldset>
+      </div>
 
-    <div id ="left">
-    <form id="logInForm">
+      <div id ="left">
+        <form id="logInForm">
 
-      <fieldset>
-          <legend> Enter LogIn Here </legend>
-          User ID :  <input type="text" name="login_id" id="logInUserName"/>
-          <br>
-          Password:  <input type="password" name="mypassword" id="logInPassword" />
-    </form>
-    <button type="submit" name="Login"> Log In</button>
-      </fieldset>
+          <fieldset>
+            <legend> Enter LogIn Here </legend>
+            <label for="login_id">User ID :</label>
+            <input type="text" name="login_id" id="logInUserName"/>
+            <br><label for="mypassword">Password:  </label>
+            <input type="password" name="mypassword" id="logInPassword" />
+          </form>
+          <br /><button id="login" type="submit" name="Login"> Log In</button>
+        </fieldset>
+      </div>
     </div>
 
 
   </body>
-  <footer> &copy 2016 Ken, Marc, Jed, and Casey. All rights reserved. </footer>
+  <footer id="footer"> &copy 2016 Ken, Marc, Jed, and Casey. All rights reserved. </footer>
   </div>
   <script src="index.js" charset="utf-8"></script>
 </html>

@@ -1,15 +1,66 @@
 * {
   margin: 0px;
-  padding: 0px
+  padding: 0px;
+  /*outline: 1px solid red;*/
+}
+body{
+  margin: 30px auto;
+  font-size: 1.3em;
+}
+h1{
+  margin-top: 40px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+h2{
+  font-size: 1em;
+  text-align: center;
 }
 
-#wrapper {
-  outline: 1px solid red;
-  width:960px;
-  margin:0 auto;
-  text-align:left;
+#left, #right{
+  display: inline-block;
+  margin-left: 20px;
+
+}
+#signUpLogIn {
+  display: flex;
+  width: 775px;
+  height: 300px;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    text-align: right;
+}
+input {
+  margin-top: 9px;
+  float: right;
 }
 
-footer{
-  outline: 1px dotted black;
+fieldset{
+  padding: 10px;
+  height: 200px;
+  line-height: 1.7;
+  position: relative;
+}
+
+#footer{
+  margin-left: 50px;
+  text-align: center;
+  float: none;
+}
+
+#signin, #login{
+  height: 50px;
+  width: 100px;
+  font-size: 1em;
+  position: absolute;
+  margin-left: 34%;
+  bottom: 12px;
+}
+#signin:hover, #login:hover{
+  transition: background-color 350ms ease;
+  background: #1985A1;
+
 }
