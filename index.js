@@ -68,10 +68,8 @@ function storeSignUpData(event) {   //also called a callback.
 
   function isPasswordandVerifytheSame (thePasswordIs, verifyPassword) {
     if (verifyPassword === thePasswordIs) {
-      document.write('Sign Up Successful. You will now be returned to Log In.');
-      setTimeout(function() {
-        window.location.href = 'index.html';
-      }, 3000);
+      alert('Thank you for signing up. You may now log in.')
+      return true;
     }
     if (thePasswordIs !== verifyPassword){
       alert('Password and Verify must match. Please try again.');
@@ -81,17 +79,17 @@ function storeSignUpData(event) {   //also called a callback.
   var samePasswordDesicion = isPasswordandVerifytheSame(thePasswordIs, verifyPassword);
 
   if (emptyArrayDecision === true && duplicateDecision === false && samePasswordDesicion === true ) {
-    pushOrDontPush(formValues);
+    savetoLocalStorage(formValues);
 
   }
 
-  function pushOrDontPush(formValues) {
+  function savetoLocalStorage(formValues) {
     houseArray.push(formValues);
     var houseArrayStringified = JSON.stringify(houseArray);
     localStorage.setItem('allTheHouses', houseArrayStringified);
   }
-} // end of
 
+} // end of sign up
 
 //**********************Log In Function*****************************************
 // when I press the Log in button, I want the computer to see if the key:value is
@@ -101,18 +99,39 @@ function storeSignUpData(event) {   //also called a callback.
 //   event.preventDefault();
 //   var myNameIs = event.target.elements.login_id.value;
 //   var myPassword = event.target.elements.mypassword.value;
-//   var logInValues = {login_id: myNameIs, mypassword:myPassword};
-//   // var getFromStorage = localStorage.getItem('signUpValues');
-//   // var formValues = JSON.parse(getFromStorage);
-//   // console.log(formValues);
-//   for (var i = 0; i < houseArray.length; i++) {
+//   var logInValues = {
+//     login_id:   myNameIs,
+//     mypassword: myPassword
+//   };
 //
-//     if (logInValues.login_id === houseArray[i].user_id
-//   && logInValues.mypassword === houseArray[i].password) {
-//       console.log('user has logged in correctly');
-//       window.location.href = 'https://www.google.com';
-//     }
-//     if (logInValues.login_id !== houseArray[i]) {
+//
+//   function iDandPWmatch (login_id, houseArray) {
+//     console.log ('yep');
+//     for (var i = 0; i < houseArray.length; i++) {
+//     if (myNameIs === houseArray[i].user_id)
+//       console.log ('i am true');
+//     }   //end of loop
+
+    //
+    // else {
+    //   alert('User ID/Password not found');
+    //   console.log('i am false');
+    // }
+    //
+    // var letsLogIn = iDandPWmatch(logInValues, formValues);
+    // if(letsLogIn === true ) {
+    //   console.log('I want to go to the website');
+    //   window.location.href = 'https://www.google.com';
+    // }
+  // } //end of idandPWmatch
+
+  // var getFromStorage = localStorage.getItem('signUpValues');
+//   // var formValues = JSON.parse(getFromStorage);
+//
+// } //end of SignIn Function
+// //   for (var i = 0; i < houseArray.length; i++) {
+// //
+// //     if (logInValues.login_id !== houseArray[i]) {
 //       alert('User ID/Password not found. Please try again!');
 //       console.log('user info not found');
 //       break;
@@ -124,5 +143,5 @@ function storeSignUpData(event) {   //also called a callback.
 //       alert('Please enter a User ID');
 //   }
 // }
-//
+
 // //******************************************************************************
