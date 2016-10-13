@@ -94,4 +94,4 @@ display();
 // function resetLS(){
 //   localStorage.clear();
 // }
-//RLS.addEventListener('click', resetLS);
+//RLS.addEventListener('click', resetLS)

@@ -8,67 +8,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-    <!-- <link rel="stylesheet" type="text/css" href="home.css"> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Homepage</title>
 </head>
 
 <body>
     <div class="body-wrapper">
-        <!-- <p> Roommate section </p>
-      <form class="roommateForm"> Add/Remove: <input type="button" name="Add/Remove" value="Add/Remove roommate"/>
-     </form> -->
         <header>
             <div class="nav-relative">
                 <nav class="nav" id="navigation"></nav>
             </div>
         </header>
-        <h1> Manage roommates </h1>
-        <form id="addRoomateForm">
-            <fieldset>
-                <legend>Add Roommate</legend>
-                <label for="newFirstName">First Name:</label>
-                <input name="newFirstName" type="text" /><br/>
-                <label for="newLastName">Last Name:</label>
-                <input name="newLastName" type="text" /><br/>
-                <label for="newEmail">Email:</label>
-                <input name="newEmail" type="email" /><br/>
-                <button type="submit">Add</button>
-            </fieldset>
-        </form>
-        <section>
-          <div id="roommateDiv">
-            <ul id="roommatesList"></ul>
-          </div>
-        </section>
-        <!-- <form class="billForm"> Add/Remove : <input type="button" name="Add/Remove" value="Add/Remove bills"> -->
-        <div class="div-form">
-            <form class="bill-form" id="bill-form">
-                <label for="billname">Bill Name:</label>
-                <input type="text" name="billname"><br>
-                <label for="amount">Amount:</label>
-                <input type="text" name="amount"><br>
-                <label for="frequency">Frequency:</label>
-                <input type="text" name="frequency"><br>
-                <label for="category">Category:</label>
-                <input type="text" name="category"><br>
-                <label for="duedate">Due Date:</label>
-                <input type="date" name="duedate"><br>
-                <div id="checkboxes"></div>
-                <input type="submit" name="submit" value="Submit">
-            </form>
-        </div>
-        <section>
-          <div id="billList">
-            <table id="billTable"></table>
-          </div>
-          <div id="individualBillList">
-            <table id="individualBillTable"></table>
-          </div>
-        </section>
+        <h1> Bill Tracker
+            <h1>
+                <h2> Manage roommates </h2>
+                <div class="forms">
+                    <form id="addRoomateForm">
+                        <fieldset>
+                            <legend>Add Roommate</legend>
+                            <label for="newFirstName">First Name:</label>
+                            <input name="newFirstName" type="text" /><br/>
+                            <label for="newLastName">Last Name:</label>
+                            <input name="newLastName" type="text" /><br/>
+                            <label for="newEmail">Email:</label>
+                            <input name="newEmail" type="email" /><br/>
+                            <button type="submit">Add</button>
+                        </fieldset>
+                    </form>
+                    <section>
+                        <div id="roommateDiv">
+                            <ul id="roommatesList"></ul>
+                        </div>
+                    </section>
+                    <div class="div-form">
+                        <form class="bill-form" id="bill-form">
+                            <fieldset>
+                                <legend>Input New Bill</legend>
+                                <label for="billname">Bill Name:</label>
+                                <input type="text" name="billname"><br>
+                                <label for="amount">Amount:</label>
+                                <input type="text" name="amount"><br>
+                                <label for="frequency">Frequency:</label>
+                                <input type="text" name="frequency"><br>
+                                <label for="category">Category:</label>
+                                <input type="text" name="category"><br>
+                                <label for="duedate">Due Date:</label>
+                                <input type="date" name="duedate"><br>
+                                <div class="checkboxes" id="checkboxes"></div>
+                                <input type="submit" name="submit" value="Submit">
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <section>
+                    <div id="billList">
+                        <table id="billTable"></table>
+                    </div>
+                    <div id="individualBillList">
+                        <table id="individualBillTable"></table>
+                    </div>
+                </section>
     </div>
-    <script src="roommate.js"></script>
     <script src="elements.js"></script>
+    <script src="roommate.js"></script>
     <script src="bills.js"></script>
+    <script src="newBillEvent.js"></script>
 </body>
 <footer>Footer content Copyright (c) 2016 Copyright Holder All Rights Reserved.
 </footer>
