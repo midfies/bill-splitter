@@ -2,13 +2,16 @@
 
 var roommate = [];
 var bills = [];
-
-if (localStorage.getItem('roommates')) {
-    roommate = JSON.parse(localStorage.getItem('roommates'));
-}
-if (localStorage.getItem('Bills')) {
-    bills = JSON.parse(localStorage.getItem('Bills'));
-}
+var loggedIn = localStorage.getItem('loggedInID');
+var house = JSON.parse(localStorage.getItem(loggedIn));
+roommate = house.roommates;
+bills = house.bills;
+// if (localStorage.getItem('roommates')) {
+//     roommate = JSON.parse(localStorage.getItem('roommates'));
+// }
+// if (localStorage.getItem('Bills')) {
+//     bills = JSON.parse(localStorage.getItem('Bills'));
+// }
 
 var customBill = document.getElementById('customAmnt');
 customBill.addEventListener('change', customBillHandler);
@@ -104,8 +107,14 @@ function newBillHandler(event) {
         newBill.splitBill();
 
         //Saving to local storage
-        localStorage.setItem('Bills', JSON.stringify(bills));
-        localStorage.setItem('roommates', JSON.stringify(roommate));
+        house.bills = bills;
+        console.log('house.roommates ', house.roommates);
+        console.log('roommates', roommates);
+      //  house.roommates = roommates;
+        var toLocalStorage = JSON.stringify(house);
+        localStorage.setItem(loggedIn, toLocalStorage);
+        // localStorage.setItem('Bills', JSON.stringify(bills));
+        // localStorage.setItem('roommates', JSON.stringify(roommate));
 
         billForm.reset();
         var resetcheckboxes = document.getElementById('checkboxes').innerHTML = '';
@@ -118,6 +127,7 @@ function newBillHandler(event) {
             alert('Please fill out all fields for the bill!');
         }
     }
+    location.reload();
 }
 
 function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
@@ -129,12 +139,12 @@ function Bill(roommates, name, amountDue, frequency, category, dueDate, id) {
     this.paid = 0; //handle later
     this.dueDate = dueDate;
     this.id = id;
-    bills.push(this);
+    house.bills.push(this);
 
     this.splitBill = function() {
-        if (localStorage.getItem('roommates')) {
-            roommate = JSON.parse(localStorage.getItem('roommates'));
-        }
+        // if (s  .getItem('roommates')) {
+        //     roommate = JSON.parse(localStorage.getItem('roommates'));
+        // }
         console.log('roommates arr length', this.roommates);
         for (var i = 0; i < this.roommates.length; i++) {
             var selectedRM = this.roommates[i];

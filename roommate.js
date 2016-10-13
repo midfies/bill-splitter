@@ -21,7 +21,6 @@ function Roommate(firstName, lastName, email){
   roommates.push(this);
 }
 var roommateDiv = document.getElementById('roommateDiv');
-console.log(roommateDiv);
 roommateDiv.addEventListener('click',handleRoommateBillList);
 function handleRoommateBillList(event){
   console.log(event);
@@ -92,6 +91,7 @@ addRoomateForm.addEventListener('submit', function(event){
   // var arrayToStore = JSON.stringify(roommates);
   // localStorage.setItem('roommates',arrayToStore);
   display();
+  location.reload();
 });
 
 display();
