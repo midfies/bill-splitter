@@ -1,23 +1,26 @@
 body {
-    width: 900px;
+    width: 700px;
     height: 100%;
     background-color: #05668D;
-    font-size: 11px;
     color: #fff;
-    font-family: 'Exo', sans-serif;
+    font-family: 'Righteous', sans-serif;
     margin: 0 auto;
     text-align: left;
-    font-size: 1.3em;
+    text-shadow: black 1px 1px;
+    font-size: 1.2em;
 }
 
 body li {
     list-style: none;
 }
-h1{
-  font-size: 3em;
+
+h1 {
+    font-size: 3em;
+    text-shadow: 10px 20px 30px black;
 }
-h2{
-  margin: 0;
+
+h2 {
+    margin: 0;
 }
 
 .nav-relative {
@@ -27,13 +30,14 @@ h2{
 .nav {
     display: block;
     position: fixed;
-    top: 5px;
-    right: 15px;
+    top: 20px;
+    right: 327px;
     border-radius: 5px;
     border: 3px solid white;
     background: #05668D;
     padding: 5px;
     width: 100px;
+    box-shadow: 10px 20px 30px black;
 }
 
 .nav a {
@@ -42,6 +46,7 @@ h2{
     color: white;
     margin: 0 0.5em;
     list-style: none;
+    text-decoration: none;
 }
 
 .form {
@@ -53,8 +58,30 @@ h2{
     padding: 10px;
 }
 
-fieldset {
+label {
+    width: 25%;
+    margin-right: 0.5em;
+    padding-top: 0.2em;
+    text-align: right;
+    font-weight: bold;
+}
 
+fieldset {
+    margin: 10px;
+    border: 2px solid #C5C3C6;
+    border-radius: 20px;
+    background-color: #46494C;
+    width: 700px;
+    box-shadow: 5px 10px 20px black;
+    transition-property: background;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    animation-duration: 2.3s;
+    animation-name: slidein;
+}
+
+fieldSet p {
+    font-size: 12px;
 }
 
 section {
@@ -71,8 +98,9 @@ input {
     margin: 2px;
     border-radius: 5px;
 }
-.percentageBox{
-  width: 30px;
+
+.percentageBox {
+    width: 30px;
 }
 
 table {
@@ -83,38 +111,49 @@ table {
 
 th {
     /*font-size: 11px;*/
-    border: 3px solid white;
+    text-align: center;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
     padding: 5px;
     border-radius: 5px;
+    color: #C5C3C6;
 }
 
 td {
-    /*font-size: 9px;*/
-    border: 1px solid black;
-    padding: 5px;
+    text-align: center;
+    border-left: 1px solid #C5C3C6;
+    border-right: 1px solid #C5C3C6;
     border-radius: 5px;
 }
-#billList, #individualBillList{
-  width: 100%;
-  margin: 0 auto;
-}
-.totalRowSpacing{
-  border: none;
-}
-#totalBox{
-  background-color: white;
-  color: black;
-  font-weight: bold;
-}
-button{
-  height: 30px;
-  width: 100px;
-  font-size: 1em;
-  border-radius: 3px;
 
+#billList,
+#individualBillList {
+    width: 100%;
+    margin: 0 auto;
 }
-button:hover{
-  transition: background-color 350ms ease;
-  background: #1985A1;
 
+.totalRowSpacing {
+    border: none;
+}
+
+#totalBox {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+button {
+    margin: 5px;
+    height: 30px;
+    width: 100px;
+    font-size: .9em;
+    font-family: 'Righteous';
+    color: white;
+    border-radius: 5px;
+    background-color: #4C5C68;
+}
+
+button:hover {
+    transition: background-color 350ms ease;
+    background: #1985A1;
 }
