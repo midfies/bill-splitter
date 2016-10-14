@@ -1,98 +1,116 @@
-body{
+body {
+    width: 900px;
+    color: #fff;
+    text-shadow: black 1px 1px;
+    font-size: 1.2em;
     color: white;
     height: 100vh;
     margin: auto;
     text-align: center;
     font-family: 'Righteous', sans-serif;
-		background-color: #05668D;
+    background-color: #05668D;
 }
-a{
-    color:#d89f52;
+
+a {
+    color: #d89f52;
 }
-pre{
-    text-align:left;
+
+pre {
+    text-align: left;
     border: white 1px solid;
     padding: 13px 33px;
 }
-hr{
+
+hr {
     border: #d89f52 1px solid;
 }
 
-.container{
+.container {
     text-align: left;
     width: 60%;
     margin: 7% auto 0;
 }
 
-#calendarThis{
+#calendarThis {
     margin: 3% auto;
     display: inline-block;
     transition: box-shadow .25s;
     border-radius: 2px;
     padding: 9px 7px 9px 7px;
     background: #05668d;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-
+    box-shadow: 10px 20px 30px black;
 }
-    #calendarThis li, .day-of-week{
-        display: inline-block;
-        padding: 13px 7px;
-        width: 33px;
-        border: #FFF9F2 1px solid;
-        text-align: center;
-        background: #46494C;
-        cursor: pointer;
-        color: #DCDCDD;
-    }
-        #calendarThis li:hover{
-            border: #F9E0B6 1px solid;
-            background: #4C5C68;
-        }
-.float-left, .day-view{
+
+#calendarThis li,
+.day-of-week {
+    display: inline-block;
+    padding: 13px 7px;
+    width: 33px;
+    border: #FFF9F2 1px solid;
+    text-align: center;
+    background: #46494C;
+    cursor: pointer;
+    color: #DCDCDD;
+}
+
+#calendarThis li:hover {
+    border: #F9E0B6 1px solid;
+    background: #4C5C68;
+}
+
+.float-left,
+.day-view {
     float: left;
 }
-.float-right, .month-view{
+
+.float-right,
+.month-view {
     float: right;
 }
-.month-view ul{
+
+.month-view ul {
     padding: 0;
     margin: 0 0 0 8px;
     text-align: left;
 }
 
-.day-view{
+.day-view {
     text-align: center;
     font-weight: bold;
 }
-    .day-header{
-        padding: 13px 0;
-        border: white 2px solid;
-        background: #fff;
-        color: black;
-    }
-    .day-number{
-        display:inline-block;
-        margin: 10% auto;
-        font-size: 90px;
-        background: #fff;
-        width: 83%;
-        border-radius: 2px;
-        position: relative;
-        top: 64%;
-        transform: translateY(12%);
-        overflow: scroll;
-        max-width: 80%;
-        min-height: 60%;
-        height: 200px;
-        word-wrap: break-word;
-        color:#05668D;
-    }
 
-.day-view, .month-view{
+.day-header {
+    padding: 13px 0;
+    border: white 2px solid;
+    background: #fff;
+    color: black;
+}
+
+.day-number {
+    display: inline-block;
+    margin: 10% auto;
+    font-size: 90px;
+    background: #fff;
+    width: 83%;
+    border-radius: 2px;
+    position: relative;
+    top: 64%;
+    transform: translateY(12%);
+    overflow: scroll;
+    max-width: 80%;
+    min-height: 60%;
+    height: 200px;
+    word-wrap: break-word;
+    color: #05668D;
+}
+
+.day-view,
+.month-view {
     width: 357px;
     display: block;
 }
-.day-of-week{
+
+.day-of-week {
     background: lightgrey !important;
     font-weight: bold;
     border: #fff 1px solid;
@@ -100,7 +118,7 @@ hr{
     border-radius: 5px;
 }
 
-.month-header{
+.month-header {
     width: 99%;
     display: block;
     text-align: center;
@@ -111,10 +129,12 @@ hr{
     font-weight: bold;
     color: black;
 }
-.today{
+
+.today {
     background: #4C5C68 !important;
 }
-.arrow{
+
+.arrow {
     width: 45px;
     height: 35px;
     margin: auto 0 auto 0;
@@ -123,23 +143,25 @@ hr{
     cursor: pointer;
 }
 
+
 /* Portrait and Landscape */
+
 @media (max-width: 767px) {
-    #calendarThis{
+    #calendarThis {
         width: 358px;
     }
 }
 
 li {
-  min-width: 2.1em;
-  min-height: 2.1em;
-  max-height: 2.1em;
-  overflow: scroll;
-  border-radius: 5px;
+    min-width: 2.1em;
+    min-height: 2.1em;
+    max-height: 2.1em;
+    overflow: scroll;
+    border-radius: 5px;
 }
 
 bill {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .nav-relative {
@@ -156,9 +178,11 @@ bill {
     background: #05668D;
     padding: 5px;
     width: 100px;
+    box-shadow: 10px 20px 30px black;
 }
 
 .nav a {
+    text-align: center;
     font-size: 0.9em;
     display: block;
     color: white;
