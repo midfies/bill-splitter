@@ -190,3 +190,7 @@ bill {
     list-style: none;
     text-decoration: none;
 }
+
+p {
+    color: black;
+}
