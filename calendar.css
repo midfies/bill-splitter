@@ -34,20 +34,20 @@ hr{
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 
 }
-    #calendarThis li, .day-of-week{
-        display: inline-block;
-        padding: 13px 7px;
-        width: 33px;
-        border: #FFF9F2 1px solid;
-        text-align: center;
-        background: #46494C;
-        cursor: pointer;
-        color: #DCDCDD;
-    }
-        #calendarThis li:hover{
-            border: #F9E0B6 1px solid;
-            background: #4C5C68;
-        }
+#calendarThis li, .day-of-week{
+    display: inline-block;
+    padding: 13px 7px;
+    width: 33px;
+    border: #FFF9F2 1px solid;
+    text-align: center;
+    background: #46494C;
+    cursor: pointer;
+    color: #DCDCDD;
+}
+#calendarThis li:hover{
+    border: #F9E0B6 1px solid;
+    background: #4C5C68;
+}
 .float-left, .day-view{
     float: left;
 }

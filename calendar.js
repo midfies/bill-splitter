@@ -49,6 +49,7 @@ bills = house.bills;
       var dayNameNode = document.createTextNode(currentDate.dayName);
       dayNameElem.appendChild(dayNameNode);
       dayView.appendChild(dayNameElem);
+
 // 21st, dayNumber
       addElem('time', 'day-number', dayView);
       var dayNumber = document.querySelector('.day-number');
@@ -90,13 +91,14 @@ bills = house.bills;
       monthSpan.className = 'month-header';
       var monthOf = document.createTextNode(
     currentDate.theMonth + ' ' + currentDate.theYear
-);
+    );
 
       monthSpan.appendChild(prevMonthSpan);
       monthSpan.appendChild(monthOf);
       monthSpan.appendChild(nextMonthSpan);
       monthView.appendChild(monthSpan);
 
+      
       for (var i = 0; i < dayNames.length; i++) {
         var dayOfWeek = document.createElement('div');
         dayOfWeek.className = 'day-of-week';
@@ -125,9 +127,10 @@ bills = house.bills;
         calCellTime.appendChild(dayOfMonth);
         calendarCell.appendChild(calCellTime);
 				
-				///////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 				
     		//Convert Date dayDataDate to proper format to match date format in the bills array
+        console.log(dayDataDate);
         var dateArr = dayDataDate.toString().split(' ');
         var slimDates = dateArr.splice(1, 3);
         slimDates = slimDates.move(2, 0);
@@ -145,22 +148,27 @@ bills = house.bills;
           }
         }
         var convertedDate = slimDates.join('-');
-    //Compare calendar dates and create list of bills matching that date
+        /*
+        //Compare calendar dates and create list of bills matching that date
         (function() {
+          var dayView = document.querySelector('.day-view');
           for (var i = 0; i < bills.length; i++) {
-            console.log(bills[i].dueDate);
             if (convertedDate === bills[i].dueDate) {
-              var calBill = document.createElement('li');
-              calBill.setAttribute('id', 'bill');
-              calBill.innerHTML = bills[i].name;
-              //calendarCell.appendChild(calBill);
-              console.log(calBill);
+              console.log('ddd',dayDataDate);
+              console.log('cd', convertedDate);
+              var section = document.createElement('section');
+              section.class = 'bills';
+              section.innerHTML = bills[i].name;
+              dayView.appendChild(section);
+            } else {
+              var sections = document.getElementsByClassName('bills');
+              console.log('sections', sections); 
             }
           }
-        }());
-        console.log('calendarlist elements', calendarList);
 
-    ///////////
+        }());
+        console.log('calendarlist elements', calendarList);*/
+///////////////////////////////////////////////////////////////////////////////////////////
 
         monthView.appendChild(calendarList);
       } // daysInMonth for loop ends
@@ -188,6 +196,47 @@ bills = house.bills;
 
         dayNumNode[0].textContent = this.textContent;
 
+        //Convert Date dayDataDate to proper format to match date format in the bills array
+        /*
+        var dateArr = dayDataDate.toString().split(' ');
+        var slimDates = dateArr.splice(1, 3);
+        slimDates = slimDates.move(2, 0);
+
+        var months = [
+        { Month: 'Jan', num: 1 }, { Month: 'Feb', num: 2 }, { Month: 'Mar', num: 3 }, { Month: 'Apr', num: 4 }, { Month: 'May', num: 5 },
+        { Month: 'Jun', num: 6 }, { Month: 'Jul', num: 7 }, { Month: 'Aug', num: 8 }, { Month: 'Sept', num: 9 }, { Month: 'Oct', num: 10 },
+        { Month: 'Nov', num: 11 }, { Month: 'Dec', num: 12 }
+        ];
+
+        for (var j = 0; j < months.length; j++) {
+          if (slimDates[1] === months[j].Month) {
+            slimDates[1] = months[j].num;
+            break;
+          }
+        }
+        var convertedDate = slimDates.join('-');
+              console.log('ddd',dayDataDate);
+              console.log('cd', convertedDate);
+              */
+        //Compare calendar dates and create list of bills matching that date
+        (function() {
+          var dayView = document.querySelector('.day-view');
+          for (var i = 0; i < bills.length; i++) {
+              console.log('ddd',dayDataDate);
+              console.log('cd', convertedDate);
+            if (convertedDate === bills[i].dueDate) {
+
+              var section = document.createElement('section');
+              section.class = 'bills';
+              section.innerHTML = bills[i].name;
+              dayView.appendChild(section);
+            } else {
+              var sections = document.getElementsByClassName('bills');
+              console.log('sections', sections); 
+            }
+          }
+
+        }());
       };
 
       var calCells = document.getElementsByClassName('calendar-cell');
@@ -197,7 +246,6 @@ bills = house.bills;
 
     }
 
-        // console.log(new DateObject(theDate));
     renderCalendar('calendarThis');
 
     function goToMonth(currentDate, direction) {

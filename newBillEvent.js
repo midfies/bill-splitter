@@ -37,9 +37,18 @@ function newBillHandler(event) {
     (function() {
         var customAmntArr = document.forms['bill-form'].elements.customAmnt;
         var chkBoxArr = document.forms['bill-form'].elements.roommates;
-
+        console.log(customAmntArr);
+        console.log(chkBoxArr); 
         //Filtering for the selected roommates from the checkbox array
         var checked = [];
+        if(!customAmntArr[0] && !chkBoxArr[0]){
+            var checkedObj = {
+                id: chkBoxArr.value,
+                customAmnt: customAmntArr.value,
+            };
+            checked.push(checkedObj);
+        }
+        
         if (chkBoxArr) {
             for (var i = 0; i < chkBoxArr.length; i++) {
                 if (chkBoxArr[i].checked) {
@@ -121,7 +130,7 @@ function newBillHandler(event) {
             alert('Please fill out all fields for the bill!');
         }
     }
-    location.reload();
+    //location.reload();
 }
 
 function Bill(roommates, name, amountDue, category, dueDate, id) {
