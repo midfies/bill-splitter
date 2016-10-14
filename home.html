@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Homepage</title>
 </head>
@@ -25,22 +26,25 @@
                 <div class="forms">
                     <form id="addRoomateForm">
                         <fieldset id="roommateFieldset">
-                          <legend>Add Roommate</legend>
-                          <div id="toHide">
-                            <label for="newFirstName">First Name:</label>
-                            <input name="newFirstName" type="text" /><br/>
-                            <label for="newLastName">Last Name:</label>
-                            <input name="newLastName" type="text" /><br/>
-                            <label for="newEmail">Email:</label>
-                            <input name="newEmail" type="email" /><br/>
-                            <button type="submit">Add</button>
-                          </div>
+                            <legend>Add Roommate</legend>
+                            <div id="toHide">
+                                <label for="newFirstName">First Name:</label>
+                                <input name="newFirstName" type="text" /><br/>
+                                <label for="newLastName">Last Name:</label>
+                                <input name="newLastName" type="text" /><br/>
+                                <label for="newEmail">Email:</label>
+                                <input name="newEmail" type="email" /><br/>
+                                <button type="submit">Add</button>
+                            </div>
                         </fieldset>
                     </form>
                     <section>
-                      <div id="roommateDiv">
-                        <ul id="roommatesList"></ul>
-                      </div>
+                        <fieldset>
+                            <legend>Current Roommates</legend>
+                            <div class="checkboxes" id="roommateDiv">
+                                <ul id="roommatesList"></ul>
+                            </div>
+                        </fieldset>
                     </section>
                     <div class="div-form">
                         <form class="bill-form" id="bill-form">
@@ -59,9 +63,9 @@
                                 </select>
                                 <label for="duedate">Due Date:</label>
                                 <input type="date" name="duedate"><br>
-                                <p>Check the roommates that will participate in the bill.  By default the bill will be split
-                                  evenly amongst the participating roommates. If you would like change the percentage each roommate pays
-                                then place the number of percent they will pay in their respective box.  All boxes must equal 100.</p>
+                                <div class="paragraph"><p>Check the roommates that will participate in the bill. By default the bill will be split evenly amongst the participating roommates. If you would like change the percentage each roommate pays then place the number of percent
+                                    they will pay in their respective box. All boxes must equal 100.</p>
+                                </div>
                                 <div class="checkboxes" id="checkboxes"></div>
                                 <button type="submit" name="submit" value="Submit">Submit</button>
                             </fieldset>
@@ -69,12 +73,15 @@
                     </div>
                 </div>
                 <section>
+									<fieldset>
+										<legend>Bills Bills Bills</legend>
                     <div id="billList">
                         <table id="billTable"></table>
                     </div>
                     <div id="individualBillList">
                         <table id="individualBillTable"></table>
                     </div>
+									</fieldset>
                 </section>
     </div>
     <script src="elements.js"></script>

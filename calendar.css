@@ -1,16 +1,17 @@
 body{
-    color: #82500D;
+    color: white;
     height: 100vh;
     margin: auto;
     text-align: center;
-    font-family: 'Exo', sans-serif;
+    font-family: 'Righteous', sans-serif;
+		background-color: #05668D;
 }
 a{
     color:#d89f52;
 }
 pre{
     text-align:left;
-    border: antiquewhite 1px solid;
+    border: white 1px solid;
     padding: 13px 33px;
 }
 hr{
@@ -65,7 +66,7 @@ hr{
 }
     .day-header{
         padding: 13px 0;
-        border: antiquewhite 2px solid;
+        border: white 2px solid;
         background: #fff;
         color: black;
     }
@@ -148,13 +149,13 @@ bill {
 .nav {
     display: block;
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 327px;
     border-radius: 5px;
-    border: 3px solid black;
-    background: grey;
+    border: 3px solid white;
+    background: #05668D;
     padding: 5px;
-    width: 90px;
+    width: 100px;
 }
 
 .nav a {
@@ -163,4 +164,5 @@ bill {
     color: white;
     margin: 0 0.5em;
     list-style: none;
+    text-decoration: none;
 }

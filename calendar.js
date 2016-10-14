@@ -124,8 +124,10 @@ bills = house.bills;
         var dayOfMonth = document.createTextNode(i + 1);
         calCellTime.appendChild(dayOfMonth);
         calendarCell.appendChild(calCellTime);
-
-    //Convert Date dayDataDate to proper format to match date format in the bills array
+				
+				///////////////////////////////
+				
+    		//Convert Date dayDataDate to proper format to match date format in the bills array
         var dateArr = dayDataDate.toString().split(' ');
         var slimDates = dateArr.splice(1, 3);
         slimDates = slimDates.move(2, 0);
@@ -151,7 +153,7 @@ bills = house.bills;
               var calBill = document.createElement('li');
               calBill.setAttribute('id', 'bill');
               calBill.innerHTML = bills[i].name;
-              calendarCell.appendChild(calBill);
+              //calendarCell.appendChild(calBill);
               console.log(calBill);
             }
           }
