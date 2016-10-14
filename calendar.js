@@ -17,7 +17,6 @@ bills = house.bills;
     var theDate = new Date();
 
     var DateObject = function DateObject(theDate) {
-//this.theDate = theDate;
       this.theDay = theDate.getDate();
       this.dayName = dayNames[theDate.getDay()];
       this.theMonth = monthNames[theDate.getMonth()];
@@ -153,7 +152,7 @@ bills = house.bills;
               var calBill = document.createElement('li');
               calBill.setAttribute('id', 'bill');
               calBill.innerHTML = bills[i].name;
-              //calendarCell.appendChild(calBill);
+              calendarCell.appendChild(calBill);
               console.log(calBill);
             }
           }
@@ -166,17 +165,17 @@ bills = house.bills;
       } // daysInMonth for loop ends
 
       var dayOne = document.getElementById('day_1');
-      if (currentDate.firstDayOfMonth == 'Monday') {
+      if (currentDate.firstDayOfMonth === 'Monday') {
         dayOne.style.marginLeft = '49px';
-      } else if (currentDate.firstDayOfMonth == 'Tuesday') {
+      } else if (currentDate.firstDayOfMonth === 'Tuesday') {
         dayOne.style.marginLeft = '98px';
-      } else if (currentDate.firstDayOfMonth == 'Wednesday') {
+      } else if (currentDate.firstDayOfMonth === 'Wednesday') {
         dayOne.style.marginLeft = '147px';
-      } else if (currentDate.firstDayOfMonth == 'Thursday') {
+      } else if (currentDate.firstDayOfMonth === 'Thursday') {
         dayOne.style.marginLeft = '196px';
-      } else if (currentDate.firstDayOfMonth == 'Friday') {
+      } else if (currentDate.firstDayOfMonth === 'Friday') {
         dayOne.style.marginLeft = '245px';
-      } else if (currentDate.firstDayOfMonth == 'Saturday') {
+      } else if (currentDate.firstDayOfMonth === 'Saturday') {
         dayOne.style.marginLeft = '304px';
       }
 
@@ -201,7 +200,7 @@ bills = house.bills;
     renderCalendar('calendarThis');
 
     function goToMonth(currentDate, direction) {
-      if (direction == false) {
+      if (direction === false) {
         theDate = new Date(theDate.getFullYear(), theDate.getMonth() - 1, 1);
       } else {
         theDate = new Date(theDate.getFullYear(), theDate.getMonth() + 1, 1);

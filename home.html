@@ -20,9 +20,9 @@
                 <nav class="nav" id="navigation"></nav>
             </div>
         </header>
-        <h1> Bill Tracker
-            <h1>
+        <h1> Bill Tracker<h1>
                 <h2>Roommates </h2>
+								<div id="calendar"></div>
                 <div class="forms">
                     <form id="addRoomateForm">
                         <fieldset id="roommateFieldset">
@@ -47,30 +47,30 @@
                         </fieldset>
                     </section>
                     <div class="div-form">
-                        <form class="bill-form" id="bill-form">
-                            <fieldset>
-                                <legend>Input New Bill</legend>
-                                <label for="billname">Bill Name:</label>
-                                <input type="text" name="billname"><br>
-                                <label for="amount">Amount:</label>
-                                <input type="text" name="amount"><br>
-                                <label for="category">Category:</label>
-                                <select id="category">
-                                  <option value="Housing">Housing</option>
-                                  <option value="Utilities">Utilities</option>
-                                  <option value="Entertainment">Entertainment</option>
-                                  <option value="Other">Other</option>
-                                </select>
-                                <label for="duedate">Due Date:</label>
-                                <input type="date" name="duedate"><br>
-                                <div class="paragraph">
-                                    <p>Check the roommates that will participate in the bill. By default the bill will be split evenly amongst the participating roommates. If you would like change the percentage each roommate pays then place the number of
-                                        percent they will pay in their respective box. All boxes must equal 100.</p>
-                                </div>
-                                <div class="checkboxes" id="checkboxes"></div>
-                                <button type="submit" name="submit" value="Submit">Submit</button>
-                            </fieldset>
-                        </form>
+											<form class="bill-form" id="bill-form">
+												<fieldset>
+													<legend>Input New Bill</legend>
+													<label for="billname">Bill Name:</label>
+													<input type="text" name="billname"><br>
+													<label for="amount">Amount:</label>
+													<input type="text" name="amount"><br>
+													<label for="category">Category:</label>
+													<select id="category">
+														<option value="Housing">Housing</option>
+														<option value="Utilities">Utilities</option>
+														<option value="Entertainment">Entertainment</option>
+														<option value="Other">Other</option>
+													</select>
+													<label for="duedate">Due Date:</label>
+													<input type="date" name="duedate"><br>
+														<div class="paragraph">
+															<p>Check the roommates that will participate in the bill. By default the bill will be split evenly amongst the participating roommates. If you would like change the percentage each roommate pays then place the number of
+																	percent they will pay in their respective box. All boxes must equal 100.</p>
+														</div>
+													<div class="checkboxes" id="checkboxes"></div>
+													<button type="submit" name="submit" value="Submit">Submit</button>
+												</fieldset>
+											</form>
                     </div>
                 </div>
                 <section>

@@ -26,6 +26,23 @@ function customBillHandler(event) {
     }
 }
 
+var calendar = document.getElementById('navigation');
+calendar.addEventListener('click', calendarHandler);
+
+function calendarHandler(event) {
+    event.preventDefault();
+    var calendarElement = document.getElementById('calendar');
+    var href = event.target.href;
+    var click = event.target.innerHTML;
+    if (click === 'Calendar') {
+        calendarElement.setAttribute('position', 'absolute');
+        calendarElement.setAttribute('top', '50%');
+        calendarElement.setAttribute('left', '50%');
+    } else {
+        location.href = href;
+    }
+}
+
 var billForm = document.getElementById('bill-form');
 billForm.addEventListener('submit', newBillHandler);
 
